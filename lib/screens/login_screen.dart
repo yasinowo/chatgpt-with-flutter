@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(
                         'Welcome back! Please login to continue',
                         style: MyFonts.bodySmall.copyWith(
-                            color: theme.colorScheme.onSurface,
+                            color: theme.colorScheme.primary,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -107,13 +107,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               thickness: 0.9,
                               indent: 0,
                               endIndent: 7,
-                              color: theme.colorScheme.onSurface,
+                              color: theme.colorScheme.primary,
                             ),
                           ),
                           Text(
                             'Or continue with',
                             style: MyFonts.bodySmall
-                                .copyWith(color: theme.colorScheme.onSurface),
+                                .copyWith(color: theme.colorScheme.primary),
                           ),
                           SizedBox(
                             height: 1.h,
@@ -122,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               thickness: 0.9,
                               indent: 7,
                               endIndent: 0,
-                              color: theme.colorScheme.onSurface,
+                              color: theme.colorScheme.primary,
                             ),
                           ),
                         ],
