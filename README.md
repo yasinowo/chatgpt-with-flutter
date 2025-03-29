@@ -1,56 +1,56 @@
-# AI CHAT  
-
----  
-
-## 🚀 معرفی پروژه  
-
-ChatGPT یک اپلیکیشن چت هوش مصنوعی پیشرفته است که بر پایه‌ی **OpenAI** طراحی شده است. این اپلیکیشن با عملکرد سریع، طراحی مدرن و بدون هیچ محدودیتی، تجربه‌ای روان و حرفه‌ای را برای کاربران فراهم می‌کند.  
-
----  
-
-## 📸 اسکرین‌شات‌ها
-<p align="center">
-  <img src="./screen1.png" alt="home" width="300" />  
-  <p/>
-
+# AI CHAT
 
 ---
-## 🎥 ویدیو دمو  
 
-برای مشاهده‌ی عملکرد اپلیکیشن، [اینجا کلیک کنید](https://raw.githubusercontent.com/yasinowo/Chatgpt/refs/heads/main/Screenrecorder-2025-02-06-17-56-02-665.mp4).  
+##  Project Introduction
 
-<video src="Screenrecorder-2025-02-06-17-56-02-665.mp4" controls width="100%"></video>  
+ChatGPT is an advanced AI chat application designed based on **OpenAI**. This application provides a smooth and professional experience for users with its fast performance, modern design, and no limitations.
 
----  
+---
 
-## 🔥 ویژگی‌ها  
+##  Screenshots
 
-✅ **بدون محدودیت** – چت بدون هیچ‌گونه محدودیت و فیلتر  
-✅ **طراحی عالی** – رابط کاربری زیبا و کاربرپسند  
-✅ **عملکرد سریع** – پاسخ‌گویی فوری با پردازش بهینه‌شده  
-✅ **امنیت بالا** – حفظ حریم خصوصی کاربران در محیطی امن  
-✅ **پشتیبانی از چندین مدل** – امکان استفاده از مدل‌های مختلف هوش مصنوعی  
-✅ **نصب آسان** – تنها با یک کلیک برنامه را دریافت و اجرا کنید  
+<p align="center">
+  <img src="./screen1.png" alt="home" width="300" />
+<p/>
 
----  
+---
 
-## 📥 نصب و اجرا  
+##  Demo Video
 
-1. **دانلود آخرین نسخه**  
-   آخرین نسخه‌ی اپلیکیشن را از [اینجا دانلود کنید](https://raw.githubusercontent.com/yasinowo/Chatgpt/refs/heads/main/chatgpt2.apk).  
+To see the application's performance, [click here](https://raw.githubusercontent.com/yasinowo/Chatgpt/refs/heads/main/Screenrecorder-2025-02-06-17-56-02-665.mp4).
 
-2. **نصب فایل APK**  
+<video src="Screenrecorder-2025-02-06-17-56-02-665.mp4" controls width="100%"></video>
 
-   - روی لینک دانلود کلیک کنید و فایل APK را دریافت کنید.  
-   - فایل را اجرا کرده و نصب را تکمیل کنید.  
-   - اپلیکیشن را باز کنید و از امکانات آن لذت ببرید!  
+---
 
----  
+##  Features
 
-## 📞 تماس با من  
+✅ **Unlimited** – Chat without any restrictions or filters.
+✅ **Great Design** – Beautiful and user-friendly interface.
+✅ **Fast Performance** – Instant responses with optimized processing.
+✅ **High Security** – Maintaining user privacy in a secure environment.
+✅ **Multiple Model Support** – Ability to use different AI models.
+✅ **Easy Installation** – Download and run the application with just one click.
 
-به کمک نیاز دارید یا سوالی دارید؟ من اینجا هستم تا به شما کمک کنم:  
+---
 
-- **تلگرام**: [yasin](https://t.me/yasinid)  
+##  Installation and Execution
+
+1.  **Download the latest version**
+    Download the latest version of the application from [here](https://raw.githubusercontent.com/yasinowo/Chatgpt/refs/heads/main/chatgpt2.apk).
+
+2.  **Install the APK file**
+    * Click on the download link and download the APK file.
+    * Run the file and complete the installation.
+    * Open the application and enjoy its features!
+
+---
+
+##  Contact Me
+
+Need help or have questions? I'm here to assist you:
+
+* **Telegram**: [yasin](https://t.me/yasinid)
 
 ---
