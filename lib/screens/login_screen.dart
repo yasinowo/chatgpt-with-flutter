@@ -201,10 +201,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: MyFonts.bodySmall.copyWith(
                               color: theme.colorScheme.inverseSurface),
                         ),
-                        Text(
-                          'Sign up',
-                          style: MyFonts.bodySmall
-                              .copyWith(color: theme.colorScheme.tertiary),
+                        GestureDetector(
+                          onTap: () =>
+                              Navigator.pushNamed(context, '/register'),
+                          child: Text(
+                            'Sign up',
+                            style: MyFonts.bodySmall
+                                .copyWith(color: theme.colorScheme.tertiary),
+                          ),
                         ),
                       ],
                     ),

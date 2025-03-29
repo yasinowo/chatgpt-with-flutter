@@ -39,7 +39,11 @@ class MyApp extends StatelessWidget {
           // themeMode: ThemeMode.dark,
           theme: darkMode,
           // AppThem().themData,
-
+          routes: {
+            '/register': (context) => const RegisterScreen(),
+            '/login': (context) => const LoginScreen(),
+            '/chat': (context) => const ChatScreen(),
+          },
           // You can use the library anywhere in the app even in theme
           home: child,
         );
