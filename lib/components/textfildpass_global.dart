@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_chat_gpt/them/fonts_style.dart';
 import 'package:my_chat_gpt/util/constants.dart';
 
 class MypassTextFild extends StatefulWidget {
@@ -28,20 +29,21 @@ class _MypassTextFildState extends State<MypassTextFild> {
       child: TextFormField(
         controller: widget.controller,
         obscureText: _obscurePassword,
-        style: theme.textTheme.bodyLarge!.copyWith(color: AppColor.txgrey),
+        style: MyFonts.bodyLarge.copyWith(color: theme.colorScheme.secondary),
         decoration: InputDecoration(
-          fillColor: AppColor.normal, // Change this to your desired color
+          fillColor: theme
+              .colorScheme.inversePrimary, // Change this to your desired color
           filled: true,
           labelText: widget.text,
           labelStyle:
-              theme.textTheme.bodyMedium!.copyWith(color: AppColor.strong),
+              MyFonts.bodyMedium.copyWith(color: theme.colorScheme.primary),
 
           prefixIcon: Padding(
             padding: EdgeInsets.only(right: 10.w, left: 15.w),
-            child: const Icon(
+            child: Icon(
               Icons.password_outlined,
-              size: 32,
-              color: AppColor.strong,
+              size: 26.sp,
+              color: theme.colorScheme.primary,
             ),
           ),
           suffixIcon: IconButton(
@@ -53,11 +55,11 @@ class _MypassTextFildState extends State<MypassTextFild> {
             icon: _obscurePassword
                 ? Icon(
                     Icons.visibility_off_outlined,
-                    color: AppColor.strong,
+                    color: theme.colorScheme.primary,
                   )
                 : Icon(
                     Icons.visibility_outlined,
-                    color: AppColor.strong,
+                    color: theme.colorScheme.primary,
                   ),
           ),
           border: OutlineInputBorder(
@@ -65,11 +67,13 @@ class _MypassTextFildState extends State<MypassTextFild> {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: AppColor.active, width: 4),
+            borderSide:
+                BorderSide(color: theme.colorScheme.secondary, width: 4),
           ),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: AppColor.strong, width: 3)),
+              borderSide:
+                  BorderSide(color: theme.colorScheme.primary, width: 3)),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {

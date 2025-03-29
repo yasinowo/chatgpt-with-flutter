@@ -28,7 +28,7 @@ class MyTextFild extends StatelessWidget {
             padding: EdgeInsets.only(right: 10.w, left: 15.w),
             child: Icon(
               Icons.email_outlined,
-              size: 32,
+              size: 26.sp,
               color: theme.colorScheme.primary,
             ),
           ),

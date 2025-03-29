@@ -197,9 +197,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Dont have an account? ',
-                          style: MyFonts.bodySmall.copyWith(
-                              color: theme.colorScheme.inverseSurface),
+                          'Dont have an account?  ',
+                          style: MyFonts.bodySmall
+                              .copyWith(color: theme.colorScheme.primary),
                         ),
                         GestureDetector(
                           onTap: () =>
@@ -217,9 +217,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Contact to us? ',
-                          style: MyFonts.bodySmall.copyWith(
-                              color: theme.colorScheme.inverseSurface),
+                          'Contact to us?  ',
+                          style: MyFonts.bodySmall
+                              .copyWith(color: theme.colorScheme.primary),
                         ),
                         InkWell(
                           onTap: () {
