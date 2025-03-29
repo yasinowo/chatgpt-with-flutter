@@ -26,12 +26,12 @@ To see the application's performance, [click here](https://raw.githubusercontent
 
 ##  Features
 
-✅ **Unlimited** – Chat without any restrictions or filters.
-✅ **Great Design** – Beautiful and user-friendly interface.
-✅ **Fast Performance** – Instant responses with optimized processing.
-✅ **High Security** – Maintaining user privacy in a secure environment.
-✅ **Multiple Model Support** – Ability to use different AI models.
-✅ **Easy Installation** – Download and run the application with just one click.
+✅ **Unlimited** – Chat without any restrictions or filters. <br>
+✅ **Great Design** – Beautiful and user-friendly interface.<br>
+✅ **Fast Performance** – Instant responses with optimized processing.<br>
+✅ **High Security** – Maintaining user privacy in a secure environment.<br>
+✅ **Multiple Model Support** – Ability to use different AI models.<br>
+✅ **Easy Installation** – Download and run the application with just one click.<br>
 
 ---
 
