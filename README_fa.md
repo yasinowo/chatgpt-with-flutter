@@ -54,3 +54,7 @@ ChatGPT یک اپلیکیشن چت هوش مصنوعی پیشرفته است ک�
 - **تلگرام**: [yasin](https://t.me/yasinid)  
 
 ---
+
+## License
+
+This project is licensed under the CC BY-NC-ND 4.0 License. See the [LICENSE](https://raw.githubusercontent.com/yasinowo/Chatgpt/refs/heads/main/LICENSE) file for details. 

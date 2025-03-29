@@ -54,3 +54,8 @@ Need help or have questions? I'm here to assist you:
 * **Telegram**: [yasin](https://t.me/yasinid)
 
 ---
+---
+
+## License
+
+This project is licensed under the CC BY-NC-ND 4.0 License. See the [LICENSE](https://raw.githubusercontent.com/yasinowo/Chatgpt/refs/heads/main/LICENSE) file for details.

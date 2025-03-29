@@ -1,3 +1,5 @@
+// This code is licensed under the CC BY-NC-ND 4.0 License.
+// See the LICENSE file for details.   <<<<<<<<<<<====================================
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
