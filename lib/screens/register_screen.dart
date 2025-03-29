@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_chat_gpt/util/constants.dart';
-import 'package:my_chat_gpt/widget/global/appbar_global.dart';
-import 'package:my_chat_gpt/widget/global/button_global.dart';
-import 'package:my_chat_gpt/widget/global/textfild_global.dart';
-import 'package:my_chat_gpt/widget/global/textfildpass_global.dart';
+import 'package:my_chat_gpt/components/appbar_global.dart';
+import 'package:my_chat_gpt/components/button_global.dart';
+import 'package:my_chat_gpt/components/textfild_global.dart';
+import 'package:my_chat_gpt/components/textfildpass_global.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -82,7 +82,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 20.w),
-                      child: MyElevatedButton(
+                      child: ElevatedButtonGlobal(
                         text: 'Sign Up',
                         formKey: _formKey,
                       ),

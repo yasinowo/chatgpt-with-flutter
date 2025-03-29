@@ -8,7 +8,7 @@ import 'package:my_chat_gpt/data/database/chat_database.dart';
 import 'package:my_chat_gpt/model/massage.dart';
 import 'package:my_chat_gpt/util/constants.dart';
 import 'package:my_chat_gpt/util/extentions.dart';
-import 'package:my_chat_gpt/widget/global/appbar_global.dart';
+import 'package:my_chat_gpt/components/appbar_global.dart';
 import 'package:stream_typewriter_text/stream_typewriter_text.dart';
 
 class ChatScreen extends StatefulWidget {

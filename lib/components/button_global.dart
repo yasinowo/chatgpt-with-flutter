@@ -2,12 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_chat_gpt/bloc/auth/auth_bloc.dart';
 import 'package:my_chat_gpt/util/constants.dart';
 import 'package:my_chat_gpt/them/fonts_style.dart';
 
-class MyElevatedButton extends StatelessWidget {
-  const MyElevatedButton(
+class ElevatedButtonGlobal extends StatelessWidget {
+  const ElevatedButtonGlobal(
       {super.key,
       required this.text,
       required this.formKey,
@@ -21,7 +22,13 @@ class MyElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return ElevatedButton(
-      style: theme.elevatedButtonTheme.style,
+      style: ElevatedButton.styleFrom(
+        minimumSize: Size(250.w, 45.h),
+        backgroundColor: theme.colorScheme.primaryContainer,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+      ),
       onPressed: () {
         if (formKey.currentState?.validate() ?? false) {
           // اگر مقادیر تکست‌فیلدها درست بود، عملیات را ادامه بده
@@ -40,7 +47,7 @@ class MyElevatedButton extends StatelessWidget {
       },
       child: Text(
         text,
-        style: MyFonts.bodyMedium.copyWith(color: AppColor.white),
+        style: MyFonts.bodyMedium.copyWith(color: theme.colorScheme.tertiary),
       ),
     );
   }

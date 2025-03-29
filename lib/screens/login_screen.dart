@@ -7,9 +7,9 @@ import 'package:my_chat_gpt/screens/chat_screen.dart';
 import 'package:my_chat_gpt/them/fonts_style.dart';
 import 'package:my_chat_gpt/util/auth_manager.dart';
 import 'package:my_chat_gpt/util/constants.dart';
-import 'package:my_chat_gpt/widget/global/button_global.dart';
-import 'package:my_chat_gpt/widget/global/textfild_global.dart';
-import 'package:my_chat_gpt/widget/global/textfildpass_global.dart';
+import 'package:my_chat_gpt/components/button_global.dart';
+import 'package:my_chat_gpt/components/textfild_global.dart';
+import 'package:my_chat_gpt/components/textfildpass_global.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 20.w),
-                      child: MyElevatedButton(
+                      child: ElevatedButtonGlobal(
                         text: 'Login',
                         formKey: _formKey,
                         usernameController: usernameController,
