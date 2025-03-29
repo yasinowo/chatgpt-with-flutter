@@ -4,8 +4,8 @@ import 'package:my_chat_gpt/them/fonts_style.dart';
 import 'package:my_chat_gpt/util/constants.dart';
 
 // ignore: must_be_immutable
-class MyTextFild extends StatelessWidget {
-  MyTextFild({super.key, required this.controller, required this.text});
+class TextFildGlobal extends StatelessWidget {
+  TextFildGlobal({super.key, required this.controller, required this.text});
   TextEditingController controller = TextEditingController();
   String text;
 

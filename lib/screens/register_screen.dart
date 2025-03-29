@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_chat_gpt/util/constants.dart';
+import 'package:my_chat_gpt/them/fonts_style.dart';
 import 'package:my_chat_gpt/components/appbar_global.dart';
 import 'package:my_chat_gpt/components/button_global.dart';
 import 'package:my_chat_gpt/components/textfild_global.dart';
@@ -29,59 +29,60 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: appBarGlobal(theme, context),
-        backgroundColor: theme.scaffoldBackgroundColor,
+        backgroundColor: theme.colorScheme.surface,
         body: Form(
             key: _formKey,
             child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+              padding: EdgeInsets.only(
+                right: 20.w,
+                left: 20.w,
+              ),
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       'Create your account',
-                      style: theme.textTheme.titleMedium!.copyWith(
-                          color: AppColor.white, fontWeight: FontWeight.bold),
+                      style: MyFonts.titleMedium.copyWith(
+                          color: theme.colorScheme.tertiary,
+                          fontWeight: FontWeight.bold),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 5.h, bottom: 10.h),
+                      padding: EdgeInsets.symmetric(vertical: 5.h),
                       child: Text(
                         'Join our secure AI chat platform',
-                        style: theme.textTheme.bodyMedium!
-                            .copyWith(color: AppColor.txgrey),
+                        style: MyFonts.bodyMedium
+                            .copyWith(color: theme.colorScheme.primary),
                       ),
                     ),
                     Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: MyTextFild(
+                        child: TextFildGlobal(
                           controller: fullnameController,
                           text: 'Full Name',
                         )),
                     Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: MyTextFild(
+                        child: TextFildGlobal(
                           controller: usernameController,
                           text: 'Email Address',
                         )),
                     Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: MypassTextFild(
+                        child: PwTextFildGlobal(
                           controller: passwordController,
                           text: 'Password',
                         )),
                     Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: MypassTextFild(
+                        padding: EdgeInsets.only(top: 10.h, bottom: 5),
+                        child: PwTextFildGlobal(
                           controller: passwordConfirmController,
                           text: 'Password Confirm',
                           passwordConfirmController: passwordController,
                         )),
+                    agreeTP(theme),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 0.w),
-                      child: agreeTP(theme),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20.w),
+                      padding: EdgeInsets.symmetric(vertical: 10.w),
                       child: ElevatedButtonGlobal(
                         text: 'Sign Up',
                         formKey: _formKey,
@@ -99,13 +100,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               thickness: 0.9,
                               indent: 0,
                               endIndent: 7,
-                              //color: Colors.white,
+                              // color: Colors.white,
                             ),
                           ),
                           Text(
                             'Or continue with',
-                            style: theme.textTheme.bodySmall!
-                                .copyWith(color: AppColor.txgrey),
+                            style: MyFonts.bodySmall
+                                .copyWith(color: theme.colorScheme.primary),
                           ),
                           SizedBox(
                             height: 1.h,
@@ -129,7 +130,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           width: 250.w,
                           height: 45.h,
                           decoration: BoxDecoration(
-                              color: AppColor.normal,
+                              color: theme.colorScheme.inversePrimary,
                               borderRadius: BorderRadius.circular(10)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -143,8 +144,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 width: 3.w,
                               ),
                               Text(' Sign up with Google',
-                                  style: theme.textTheme.bodyMedium!
-                                      .copyWith(color: AppColor.white))
+                                  style: MyFonts.bodyMedium.copyWith(
+                                      color: theme.colorScheme.tertiary))
                             ],
                           ),
                         ),
@@ -155,13 +156,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       children: [
                         Text(
                           'Already have an account? ',
-                          style: theme.textTheme.bodySmall!
-                              .copyWith(color: AppColor.txgrey),
+                          style: MyFonts.bodySmall
+                              .copyWith(color: theme.colorScheme.primary),
                         ),
                         Text(
                           'Login',
-                          style: theme.textTheme.bodySmall!
-                              .copyWith(color: AppColor.white),
+                          style: MyFonts.bodySmall
+                              .copyWith(color: theme.colorScheme.tertiary),
                         ),
                       ],
                     )
@@ -176,7 +177,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   agreeTP(ThemeData theme) {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       Checkbox(
-        activeColor: AppColor.strong,
+        activeColor: theme.colorScheme.primary,
         value: checkValue,
         onChanged: (value) {
           setState(() {
@@ -186,19 +187,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
       Text(
         'I agree to the ',
-        style: theme.textTheme.bodySmall!.copyWith(color: AppColor.white),
+        style: MyFonts.bodySmall.copyWith(color: theme.colorScheme.tertiary),
       ),
       Text(
         'Terms',
-        style: theme.textTheme.bodySmall!.copyWith(color: AppColor.txgrey),
+        style: MyFonts.bodySmall.copyWith(color: theme.colorScheme.primary),
       ),
       Text(
         ' and ',
-        style: theme.textTheme.bodySmall!.copyWith(color: AppColor.white),
+        style: MyFonts.bodySmall.copyWith(color: theme.colorScheme.tertiary),
       ),
       Text(
         'Privacy Policy',
-        style: theme.textTheme.bodySmall!.copyWith(color: AppColor.txgrey),
+        style: MyFonts.bodySmall.copyWith(color: theme.colorScheme.primary),
       ),
     ]);
   }

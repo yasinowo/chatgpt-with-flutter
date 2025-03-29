@@ -68,13 +68,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: MyTextFild(
+                        child: TextFildGlobal(
                           controller: usernameController,
                           text: 'Email Address',
                         )),
                     Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: MypassTextFild(
+                        child: PwTextFildGlobal(
                           controller: passwordController,
                           text: 'Password',
                         )),

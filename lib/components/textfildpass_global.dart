@@ -5,8 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_chat_gpt/them/fonts_style.dart';
 import 'package:my_chat_gpt/util/constants.dart';
 
-class MypassTextFild extends StatefulWidget {
-  MypassTextFild(
+class PwTextFildGlobal extends StatefulWidget {
+  PwTextFildGlobal(
       {super.key,
       required this.controller,
       required this.text,
@@ -15,10 +15,10 @@ class MypassTextFild extends StatefulWidget {
   TextEditingController? passwordConfirmController = TextEditingController();
   String text;
   @override
-  State<MypassTextFild> createState() => _MypassTextFildState();
+  State<PwTextFildGlobal> createState() => _PwTextFildGlobalState();
 }
 
-class _MypassTextFildState extends State<MypassTextFild> {
+class _PwTextFildGlobalState extends State<PwTextFildGlobal> {
   bool _obscurePassword = true;
 
   @override
