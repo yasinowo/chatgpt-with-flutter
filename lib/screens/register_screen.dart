@@ -53,25 +53,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: TextFildGlobal(
+                        child: MyTextFild(
                           controller: fullnameController,
                           text: 'Full Name',
                         )),
                     Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: TextFildGlobal(
+                        child: MyTextFild(
                           controller: usernameController,
                           text: 'Email Address',
                         )),
                     Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: TextFildPasswordGlobal(
+                        child: MypassTextFild(
                           controller: passwordController,
                           text: 'Password',
                         )),
                     Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: TextFildPasswordGlobal(
+                        child: MypassTextFild(
                           controller: passwordConfirmController,
                           text: 'Password Confirm',
                           passwordConfirmController: passwordController,
@@ -82,7 +82,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 20.w),
-                      child: ElevatedButtonGlobal(
+                      child: MyElevatedButton(
                         text: 'Sign Up',
                         formKey: _formKey,
                       ),

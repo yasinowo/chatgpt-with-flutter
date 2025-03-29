@@ -1,4 +1,4 @@
-import 'package:my_chat_gpt/data/model/massage.dart';
+import 'package:my_chat_gpt/model/massage.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 

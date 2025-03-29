@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_chat_gpt/util/constants.dart';
-import 'package:my_chat_gpt/util/fonts.dart';
+import 'package:my_chat_gpt/them/fonts_style.dart';
 
 class AppThem {
   final ThemeData themData = ThemeData(
@@ -12,13 +12,13 @@ class AppThem {
 }
 
 TextTheme _textTheme = TextTheme(
-    titleLarge: Fonts.titleLarge,
-    titleMedium: Fonts.titleMedium,
-    titleSmall: Fonts.titleSmall,
-    bodySmall: Fonts.bodySmall,
-    bodyMedium: Fonts.bodyMedium,
-    bodyLarge: Fonts.bodyLarge,
-    displaySmall: Fonts.displaySmall
+    titleLarge: MyFonts.titleLarge,
+    titleMedium: MyFonts.titleMedium,
+    titleSmall: MyFonts.titleSmall,
+    bodySmall: MyFonts.bodySmall,
+    bodyMedium: MyFonts.bodyMedium,
+    bodyLarge: MyFonts.bodyLarge,
+    displaySmall: MyFonts.displaySmall
 
     //
     );

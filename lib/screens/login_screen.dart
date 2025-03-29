@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_chat_gpt/data/bloc/auth/auth_bloc.dart';
-import 'package:my_chat_gpt/data/bloc/massege/massage_bloc.dart';
-import 'package:my_chat_gpt/data/model/massage.dart';
+import 'package:my_chat_gpt/bloc/auth/auth_bloc.dart';
+import 'package:my_chat_gpt/bloc/massege/massage_bloc.dart';
 import 'package:my_chat_gpt/screens/chat_screen.dart';
+import 'package:my_chat_gpt/them/fonts_style.dart';
 import 'package:my_chat_gpt/util/auth_manager.dart';
 import 'package:my_chat_gpt/util/constants.dart';
 import 'package:my_chat_gpt/widget/global/button_global.dart';
@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
+      backgroundColor: theme.colorScheme.surface,
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthResponseS) {
@@ -54,26 +54,27 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Text(
                       'Ai Chat',
-                      style: theme.textTheme.titleLarge!
-                          .copyWith(color: AppColor.white),
+                      style: MyFonts.titleLarge
+                          .copyWith(color: theme.colorScheme.tertiary),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 5.h, bottom: 10.h),
                       child: Text(
                         'Welcome back! Please login to continue',
-                        style: theme.textTheme.bodySmall!
-                            .copyWith(color: AppColor.txgrey),
+                        style: MyFonts.bodySmall.copyWith(
+                            color: theme.colorScheme.onSurface,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                     Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: TextFildGlobal(
+                        child: MyTextFild(
                           controller: usernameController,
                           text: 'Email Address',
                         )),
                     Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: TextFildPasswordGlobal(
+                        child: MypassTextFild(
                           controller: passwordController,
                           text: 'Password',
                         )),
@@ -81,13 +82,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: EdgeInsets.only(left: 150.w),
                       child: Text(
                         'Forgot password?',
-                        style: theme.textTheme.bodySmall!
-                            .copyWith(color: AppColor.white),
+                        style: MyFonts.bodySmall
+                            .copyWith(color: theme.colorScheme.tertiary),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 20.w),
-                      child: ElevatedButtonGlobal(
+                      child: MyElevatedButton(
                         text: 'Login',
                         formKey: _formKey,
                         usernameController: usernameController,
@@ -106,13 +107,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               thickness: 0.9,
                               indent: 0,
                               endIndent: 7,
-                              //color: Colors.white,
+                              color: theme.colorScheme.onSurface,
                             ),
                           ),
                           Text(
                             'Or continue with',
-                            style: theme.textTheme.bodySmall!
-                                .copyWith(color: AppColor.txgrey),
+                            style: MyFonts.bodySmall
+                                .copyWith(color: theme.colorScheme.onSurface),
                           ),
                           SizedBox(
                             height: 1.h,
@@ -121,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               thickness: 0.9,
                               indent: 7,
                               endIndent: 0,
-                              //color: Colors.white,
+                              color: theme.colorScheme.onSurface,
                             ),
                           ),
                         ],
@@ -141,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               width: 120.w,
                               height: 50.h,
                               decoration: BoxDecoration(
-                                  color: AppColor.normal,
+                                  color: theme.colorScheme.inversePrimary,
                                   borderRadius: BorderRadius.circular(10)),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -155,8 +156,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     width: 3.w,
                                   ),
                                   Text('Google',
-                                      style: theme.textTheme.bodyMedium!
-                                          .copyWith(color: AppColor.white))
+                                      style: MyFonts.bodyMedium.copyWith(
+                                          color: theme.colorScheme.tertiary))
                                 ],
                               ),
                             ),
@@ -170,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               width: 120.w,
                               height: 50.h,
                               decoration: BoxDecoration(
-                                  color: AppColor.normal,
+                                  color: theme.colorScheme.inversePrimary,
                                   borderRadius: BorderRadius.circular(10)),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -182,8 +183,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   Text(
                                     'apple',
-                                    style: theme.textTheme.bodyMedium!
-                                        .copyWith(color: AppColor.white),
+                                    style: MyFonts.bodyMedium.copyWith(
+                                        color: theme.colorScheme.tertiary),
                                   )
                                 ],
                               ),
@@ -197,13 +198,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         Text(
                           'Dont have an account? ',
-                          style: theme.textTheme.bodySmall!
-                              .copyWith(color: AppColor.txgrey),
+                          style: MyFonts.bodySmall.copyWith(
+                              color: theme.colorScheme.inverseSurface),
                         ),
                         Text(
                           'Sign up',
-                          style: theme.textTheme.bodySmall!
-                              .copyWith(color: AppColor.white),
+                          style: MyFonts.bodySmall
+                              .copyWith(color: theme.colorScheme.tertiary),
                         ),
                       ],
                     ),
@@ -213,8 +214,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         Text(
                           'Contact to us? ',
-                          style: theme.textTheme.bodySmall!
-                              .copyWith(color: AppColor.txgrey),
+                          style: MyFonts.bodySmall.copyWith(
+                              color: theme.colorScheme.inverseSurface),
                         ),
                         InkWell(
                           onTap: () {
@@ -224,8 +225,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           child: Text(
                             'yasinid',
-                            style: theme.textTheme.bodySmall!
-                                .copyWith(color: Colors.white),
+                            style: MyFonts.bodySmall
+                                .copyWith(color: theme.colorScheme.tertiary),
                           ),
                         ),
                       ],

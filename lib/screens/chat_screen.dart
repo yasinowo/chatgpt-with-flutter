@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_chat_gpt/data/bloc/massege/massage_bloc.dart';
-import 'package:my_chat_gpt/data/bloc/massege/massage_event.dart';
-import 'package:my_chat_gpt/data/bloc/massege/massage_state.dart';
+import 'package:my_chat_gpt/bloc/massege/massage_bloc.dart';
+import 'package:my_chat_gpt/bloc/massege/massage_event.dart';
+import 'package:my_chat_gpt/bloc/massege/massage_state.dart';
 import 'package:my_chat_gpt/data/database/chat_database.dart';
-import 'package:my_chat_gpt/data/model/massage.dart';
+import 'package:my_chat_gpt/model/massage.dart';
 import 'package:my_chat_gpt/util/constants.dart';
 import 'package:my_chat_gpt/util/extentions.dart';
 import 'package:my_chat_gpt/widget/global/appbar_global.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_chat_gpt/data/bloc/auth/auth_bloc.dart';
+import 'package:my_chat_gpt/bloc/auth/auth_bloc.dart';
 import 'package:my_chat_gpt/screens/login_screen.dart';
 import 'package:my_chat_gpt/util/auth_manager.dart';
 import 'package:my_chat_gpt/util/constants.dart';

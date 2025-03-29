@@ -3,13 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_chat_gpt/data/bloc/auth/auth_bloc.dart';
-import 'package:my_chat_gpt/data/bloc/massege/massage_bloc.dart';
+import 'package:my_chat_gpt/bloc/auth/auth_bloc.dart';
+import 'package:my_chat_gpt/bloc/massege/massage_bloc.dart';
 import 'package:my_chat_gpt/data/database/chat_database.dart';
 import 'package:my_chat_gpt/data/di.dart';
 import 'package:my_chat_gpt/screens/chat_screen.dart';
 import 'package:my_chat_gpt/screens/login_screen.dart';
 import 'package:my_chat_gpt/screens/register_screen.dart';
+import 'package:my_chat_gpt/them/dark_mode.dart';
 import 'package:my_chat_gpt/them/theme.dart';
 import 'package:my_chat_gpt/util/auth_manager.dart';
 import 'package:sqflite/sqflite.dart';
@@ -36,7 +37,8 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           // themeMode: ThemeMode.dark,
-          theme: AppThem().themData,
+          theme: darkMode,
+          // AppThem().themData,
 
           // You can use the library anywhere in the app even in theme
           home: child,

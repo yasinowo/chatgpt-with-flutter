@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_chat_gpt/util/constants.dart';
 
 // ignore: must_be_immutable
-class TextFildGlobal extends StatelessWidget {
-  TextFildGlobal({super.key, required this.controller, required this.text});
+class MyTextFild extends StatelessWidget {
+  MyTextFild({super.key, required this.controller, required this.text});
   TextEditingController controller = TextEditingController();
   String text;
 

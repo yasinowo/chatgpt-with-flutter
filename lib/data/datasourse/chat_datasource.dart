@@ -3,7 +3,7 @@
 import 'package:dio/dio.dart';
 import 'package:my_chat_gpt/data/database/chat_database.dart';
 import 'package:my_chat_gpt/data/di.dart';
-import 'package:my_chat_gpt/data/model/massage.dart';
+import 'package:my_chat_gpt/model/massage.dart';
 import 'package:my_chat_gpt/util/api_exception.dart';
 
 abstract class IChatDataSource {

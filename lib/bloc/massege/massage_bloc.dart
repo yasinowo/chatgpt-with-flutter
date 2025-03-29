@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:my_chat_gpt/data/bloc/massege/massage_event.dart';
-import 'package:my_chat_gpt/data/bloc/massege/massage_state.dart';
+import 'package:my_chat_gpt/bloc/massege/massage_event.dart';
+import 'package:my_chat_gpt/bloc/massege/massage_state.dart';
 import 'package:my_chat_gpt/data/di.dart';
 import 'package:my_chat_gpt/data/repository/chat_repository.dart';
 

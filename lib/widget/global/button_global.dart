@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_chat_gpt/data/bloc/auth/auth_bloc.dart';
+import 'package:my_chat_gpt/bloc/auth/auth_bloc.dart';
 import 'package:my_chat_gpt/util/constants.dart';
-import 'package:my_chat_gpt/util/fonts.dart';
+import 'package:my_chat_gpt/them/fonts_style.dart';
 
-class ElevatedButtonGlobal extends StatelessWidget {
-  const ElevatedButtonGlobal(
+class MyElevatedButton extends StatelessWidget {
+  const MyElevatedButton(
       {super.key,
       required this.text,
       required this.formKey,
@@ -40,7 +40,7 @@ class ElevatedButtonGlobal extends StatelessWidget {
       },
       child: Text(
         text,
-        style: Fonts.bodyMedium.copyWith(color: AppColor.white),
+        style: MyFonts.bodyMedium.copyWith(color: AppColor.white),
       ),
     );
   }
