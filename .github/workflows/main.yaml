@@ -1,0 +1,42 @@
+name: Build and Release APK
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release --split-per-abi
+
+      - name: Release APK
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/app/outputs/apk/release/app-*.apk
+          name: Release APK v0.0.1
+          tag_name: v0.0.1
+          body: "Release APK build number ${{ github.run_number }} latest"
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
