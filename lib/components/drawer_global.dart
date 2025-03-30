@@ -82,7 +82,7 @@ class DrawerGlobal extends StatelessWidget {
               child: ListTile(
                 leading: Icon(Icons.logout_sharp,
                     size: 28.sp, color: theme.colorScheme.tertiary),
-                title: Text('Settings',
+                title: Text('Logout',
                     style: MyFonts.bodyLarge
                         .copyWith(color: theme.colorScheme.tertiary)),
                 onTap: () {

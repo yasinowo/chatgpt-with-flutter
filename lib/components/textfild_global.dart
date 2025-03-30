@@ -19,7 +19,7 @@ class TextFildGlobal extends StatelessWidget {
         controller: controller,
         style: MyFonts.bodyLarge.copyWith(color: theme.colorScheme.primary),
         decoration: InputDecoration(
-          fillColor: AppColor.normal,
+          fillColor: theme.colorScheme.inversePrimary,
           filled: true,
           labelText: text,
           labelStyle:
