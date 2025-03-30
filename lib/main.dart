@@ -9,7 +9,9 @@ import 'package:my_chat_gpt/data/database/chat_database.dart';
 import 'package:my_chat_gpt/data/di.dart';
 import 'package:my_chat_gpt/screens/chat_screen.dart';
 import 'package:my_chat_gpt/screens/login_screen.dart';
+import 'package:my_chat_gpt/screens/profile_screen.dart';
 import 'package:my_chat_gpt/screens/register_screen.dart';
+import 'package:my_chat_gpt/screens/setting_screen.dart';
 import 'package:my_chat_gpt/them/dark_mode.dart';
 import 'package:my_chat_gpt/them/theme.dart';
 import 'package:my_chat_gpt/util/auth_manager.dart';
@@ -43,6 +45,8 @@ class MyApp extends StatelessWidget {
             '/register': (context) => const RegisterScreen(),
             '/login': (context) => const LoginScreen(),
             '/chat': (context) => const ChatScreen(),
+            '/setting': (context) => const SettingScreen(),
+            '/profile': (context) => const ProfileScreen(),
           },
           // You can use the library anywhere in the app even in theme
           home: child,

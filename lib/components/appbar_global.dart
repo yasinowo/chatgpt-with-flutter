@@ -32,56 +32,61 @@ class AppbarGlobal extends StatelessWidget implements PreferredSizeWidget {
               size: 25.sp,
             ),
           ),
-          SizedBox(
-            width: 5.w,
-          ),
+
           Text(
             'AI Assistant',
             style:
                 MyFonts.titleSmall.copyWith(color: theme.colorScheme.tertiary),
           ),
-          const Spacer(),
-          PopupMenuButton<String>(
-            color: theme.colorScheme.surface,
-            icon: CircleAvatar(
-              backgroundColor: theme.colorScheme.inversePrimary,
-              child: Icon(Icons.person, color: theme.colorScheme.tertiary),
-            ),
-            onSelected: (value) {
-              if (value == 'logout') {
-                AuthManager.logout();
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => BlocProvider(
-                      create: (context) => AuthBloc(),
-                      child: const LoginScreen(),
-                    ),
-                  ),
-                );
-              }
-            },
-            itemBuilder: (BuildContext context) {
-              return [
-                PopupMenuItem<String>(
-                  value: 'logout',
-                  child: Text(
-                    'خروج از حساب',
-                    textAlign: TextAlign.right,
-                    style: MyFonts.bodySmall.copyWith(
-                      color: theme.colorScheme.tertiary,
-                    ),
-                  ),
-                ),
-                // می‌تونید گزینه‌های بیشتری اضافه کنید
-                // PopupMenuItem<String>(
-                //   value: 'settings',
-                //   child: Text('تنظیمات'),
-                // ),
-              ];
-            },
-          ),
+          SizedBox(
+            width: 25.w,
+          )
+          // const Spacer(),
+          // popupMenu(theme, context),
         ],
       ),
+    );
+  }
+
+  PopupMenuButton<String> popupMenu(ThemeData theme, BuildContext context) {
+    return PopupMenuButton<String>(
+      color: theme.colorScheme.surface,
+      icon: CircleAvatar(
+        backgroundColor: theme.colorScheme.inversePrimary,
+        child: Icon(Icons.person, color: theme.colorScheme.tertiary),
+      ),
+      onSelected: (value) {
+        if (value == 'logout') {
+          AuthManager.logout();
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => BlocProvider(
+                create: (context) => AuthBloc(),
+                child: const LoginScreen(),
+              ),
+            ),
+          );
+        }
+      },
+      itemBuilder: (BuildContext context) {
+        return [
+          PopupMenuItem<String>(
+            value: 'logout',
+            child: Text(
+              'خروج از حساب',
+              textAlign: TextAlign.right,
+              style: MyFonts.bodySmall.copyWith(
+                color: theme.colorScheme.tertiary,
+              ),
+            ),
+          ),
+          // می‌تونید گزینه‌های بیشتری اضافه کنید
+          // PopupMenuItem<String>(
+          //   value: 'settings',
+          //   child: Text('تنظیمات'),
+          // ),
+        ];
+      },
     );
   }
 
