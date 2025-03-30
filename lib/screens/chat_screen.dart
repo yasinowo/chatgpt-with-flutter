@@ -30,10 +30,10 @@ class _ChatScreenState extends State<ChatScreen> {
     _loadMessages(); // بارگذاری پیام‌های ذخیره‌شده
   }
 
+  bool? lastMessage;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
     return SafeArea(
       child: Scaffold(
         appBar: AppbarGlobal(),
@@ -58,7 +58,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
                       // اگر پیام، پاسخ هوش مصنوعی و آخرین پیام باشد، از انیمیشن استفاده کن
                       if (!msg.isUser && index == messages.length - 1) {
-                        return lastMessageAi(
+                        return lastMessageAiWithAnimated(
                           msg,
                         );
                       }
@@ -78,7 +78,7 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  Align lastMessageAi(
+  Align lastMessageAiWithAnimated(
     ChatMessage msg,
   ) {
     return Align(
