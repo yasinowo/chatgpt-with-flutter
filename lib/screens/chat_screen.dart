@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_chat_gpt/bloc/massege/massage_bloc.dart';
 import 'package:my_chat_gpt/bloc/massege/massage_event.dart';
 import 'package:my_chat_gpt/bloc/massege/massage_state.dart';
+import 'package:my_chat_gpt/components/drawer_global.dart';
 import 'package:my_chat_gpt/data/database/chat_database.dart';
 import 'package:my_chat_gpt/model/massage.dart';
 import 'package:my_chat_gpt/util/constants.dart';
@@ -35,7 +36,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
     return SafeArea(
       child: Scaffold(
-        appBar: appBarGlobal(theme, context),
+        appBar: AppbarGlobal(),
+        drawer: DrawerGlobal(),
         backgroundColor: theme.scaffoldBackgroundColor,
         body: Column(
           children: [

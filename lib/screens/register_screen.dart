@@ -28,7 +28,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final theme = Theme.of(context);
     return SafeArea(
       child: Scaffold(
-        appBar: appBarGlobal(theme, context),
+        appBar: AppbarGlobal(),
         backgroundColor: theme.colorScheme.surface,
         body: Form(
             key: _formKey,

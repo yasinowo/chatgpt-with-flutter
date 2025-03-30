@@ -3,31 +3,49 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_chat_gpt/bloc/auth/auth_bloc.dart';
 import 'package:my_chat_gpt/screens/login_screen.dart';
+import 'package:my_chat_gpt/them/fonts_style.dart';
 import 'package:my_chat_gpt/util/auth_manager.dart';
-import 'package:my_chat_gpt/util/constants.dart';
 
-PreferredSize appBarGlobal(dynamic theme, BuildContext context) {
-  return PreferredSize(
-    preferredSize: Size(100.w, 50.h),
-    child: Padding(
+class AppbarGlobal extends StatelessWidget implements PreferredSizeWidget {
+  const AppbarGlobal({super.key});
+
+  @override
+  Size get preferredSize => Size(100.w, 50.h); // اندازه ترجیحی را مشخص کنید
+
+  @override
+  Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    return Padding(
       padding: EdgeInsets.only(
-        right: 20.w,
-        left: 20.w,
+        right: 5.w,
+        left: 5.w,
         top: 10.h,
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          GestureDetector(
+            onTap: () => Scaffold.of(context).openDrawer(),
+            child: Icon(
+              Icons.menu,
+              color: theme.colorScheme.tertiary,
+              size: 25.sp,
+            ),
+          ),
+          SizedBox(
+            width: 5.w,
+          ),
           Text(
             'AI Assistant',
-            style: theme.textTheme.titleSmall!.copyWith(color: AppColor.white),
+            style:
+                MyFonts.titleSmall.copyWith(color: theme.colorScheme.tertiary),
           ),
-          Spacer(),
-          // استفاده از PopupMenuButton به جای GestureDetector
+          const Spacer(),
           PopupMenuButton<String>(
-            color: AppColor.hover,
+            color: theme.colorScheme.surface,
             icon: CircleAvatar(
-              backgroundColor: AppColor.normal,
-              child: Icon(Icons.person, color: AppColor.white),
+              backgroundColor: theme.colorScheme.inversePrimary,
+              child: Icon(Icons.person, color: theme.colorScheme.tertiary),
             ),
             onSelected: (value) {
               if (value == 'logout') {
@@ -49,8 +67,8 @@ PreferredSize appBarGlobal(dynamic theme, BuildContext context) {
                   child: Text(
                     'خروج از حساب',
                     textAlign: TextAlign.right,
-                    style: theme.textTheme.bodySmall.copyWith(
-                      color: AppColor.white,
+                    style: MyFonts.bodySmall.copyWith(
+                      color: theme.colorScheme.tertiary,
                     ),
                   ),
                 ),
@@ -64,6 +82,8 @@ PreferredSize appBarGlobal(dynamic theme, BuildContext context) {
           ),
         ],
       ),
-    ),
-  );
+    );
+  }
+
+  Widget get child => throw UnimplementedError();
 }
