@@ -1,10 +1,10 @@
-class ChatMessage {
+class Message {
   final int? id; // برای ذخیره ID از دیتابیس
   final String message; // متن پیام
   final bool isUser; // آیا پیام برای کاربر است یا AI
   final String timestamp; // زمان ارسال پیام
 
-  ChatMessage({
+  Message({
     this.id,
     required this.message,
     required this.isUser,
@@ -23,8 +23,8 @@ class ChatMessage {
   }
 
   // تبدیل Map به مدل
-  factory ChatMessage.fromMap(Map<String, dynamic> map) {
-    return ChatMessage(
+  factory Message.fromMap(Map<String, dynamic> map) {
+    return Message(
       id: map['id'],
       message: map['message'],
       isUser: map['isUser'] == 1,

@@ -39,7 +39,7 @@ class ChatDatabase {
     );
   }
 
-  Future<void> insertMessage(ChatMessage message) async {
+  Future<void> insertMessage(Message message) async {
     final db = await database;
     await db.insert(
       'messages',
@@ -48,11 +48,11 @@ class ChatDatabase {
     );
   }
 
-  Future<List<ChatMessage>> fetchMessages() async {
+  Future<List<Message>> fetchMessages() async {
     final db = await database;
     final maps = await db.query('messages', orderBy: 'timestamp ASC');
     return List.generate(maps.length, (i) {
-      return ChatMessage.fromMap(maps[i]);
+      return Message.fromMap(maps[i]);
     });
   }
 

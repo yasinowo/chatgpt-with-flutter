@@ -39,7 +39,7 @@ class ChatRemoteDataSource implements IChatDataSource {
 
   @override
   Future<void> saveMessage(String message, bool isUser) async {
-    final chatMessage = ChatMessage(
+    final chatMessage = Message(
       message: message,
       isUser: isUser,
       timestamp: DateTime.now().toIso8601String(),

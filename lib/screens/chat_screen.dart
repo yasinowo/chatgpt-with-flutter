@@ -22,8 +22,8 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final ScrollController _controller = ScrollController();
   final TextEditingController _textController = TextEditingController();
-  List<ChatMessage> messages = [];
-  bool isAnimated = false;
+  List<Message> messages = [];
+  // bool isAnimated = false;
   @override
   void initState() {
     super.initState();
@@ -57,7 +57,10 @@ class _ChatScreenState extends State<ChatScreen> {
                       final msg = messages[index];
 
                       // اگر پیام، پاسخ هوش مصنوعی و آخرین پیام باشد، از انیمیشن استفاده کن
-                      if (!msg.isUser && index == messages.length - 1) {
+                      if (!msg.isUser &&
+                          index == messages.length - 1 &&
+                          lastMessage == true) {
+                        lastMessage = false;
                         return lastMessageAiWithAnimated(
                           msg,
                         );
@@ -79,7 +82,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Align lastMessageAiWithAnimated(
-    ChatMessage msg,
+    Message msg,
   ) {
     return Align(
       alignment: Alignment.centerLeft,
@@ -105,7 +108,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               onFinished: () {
                 setState(() {
-                  isAnimated = !isAnimated;
+                  // isAnimated = !isAnimated;
                 });
               },
               speed: const Duration(milliseconds: 50),
@@ -123,7 +126,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Align chatbox2(
-    ChatMessage msg,
+    Message msg,
   ) {
     // اگر پیام کاربر باشد
     if (msg.isUser) {
@@ -202,7 +205,7 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
-  Align chatbox1(ChatMessage msg, ThemeData theme) {
+  Align chatbox1(Message msg, ThemeData theme) {
     return Align(
       alignment: msg.isUser ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
@@ -250,6 +253,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 context.read<MassageBloc>().add(SendMassageE(text));
                 _textController.clear();
                 _scrollToBottom();
+                lastMessage = true;
               }
             },
             child: Icon(
@@ -283,7 +287,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<void> _saveMessage(String message, bool isUser) async {
-    final chatMessage = ChatMessage(
+    final chatMessage = Message(
       message: message,
       isUser: isUser,
       timestamp: DateTime.now().toIso8601String(),
