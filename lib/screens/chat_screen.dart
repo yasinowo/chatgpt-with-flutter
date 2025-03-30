@@ -7,7 +7,7 @@ import 'package:my_chat_gpt/bloc/massege/massage_state.dart';
 import 'package:my_chat_gpt/components/drawer_global.dart';
 import 'package:my_chat_gpt/data/database/chat_database.dart';
 import 'package:my_chat_gpt/model/massage.dart';
-import 'package:my_chat_gpt/util/constants.dart';
+import 'package:my_chat_gpt/them/fonts_style.dart';
 import 'package:my_chat_gpt/util/extentions.dart';
 import 'package:my_chat_gpt/components/appbar_global.dart';
 import 'package:stream_typewriter_text/stream_typewriter_text.dart';
@@ -58,25 +58,29 @@ class _ChatScreenState extends State<ChatScreen> {
 
                       // اگر پیام، پاسخ هوش مصنوعی و آخرین پیام باشد، از انیمیشن استفاده کن
                       if (!msg.isUser && index == messages.length - 1) {
-                        return lastMessageAi(msg, theme);
+                        return lastMessageAi(
+                          msg,
+                        );
                       }
 
                       // پیام‌های عادی (کاربر یا پیام‌های قبلی هوش مصنوعی)
-                      return chatbox2(msg, theme);
+                      return chatbox2(msg);
                       //chatbox1(msg, theme);
                     },
                   );
                 },
               ),
             ),
-            _buildInputField(theme),
+            _buildInputField(),
           ],
         ),
       ),
     );
   }
 
-  Align lastMessageAi(ChatMessage msg, ThemeData theme) {
+  Align lastMessageAi(
+    ChatMessage msg,
+  ) {
     return Align(
       alignment: Alignment.centerLeft,
       child: ConstrainedBox(
@@ -85,7 +89,7 @@ class _ChatScreenState extends State<ChatScreen> {
           margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 3.w),
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
           decoration: BoxDecoration(
-            color: AppColor.normal,
+            color: Theme.of(context).colorScheme.inversePrimary,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(10),
               topLeft: Radius.circular(10),
@@ -96,8 +100,8 @@ class _ChatScreenState extends State<ChatScreen> {
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             StreamTypewriterAnimatedText(
               text: msg.message,
-              style: theme.textTheme.bodyMedium!.copyWith(
-                color: Colors.white,
+              style: MyFonts.bodyMedium.copyWith(
+                color: Theme.of(context).colorScheme.tertiary,
               ),
               onFinished: () {
                 setState(() {
@@ -108,8 +112,8 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
             Text(
               msg.timestamp.formatTime(msg.timestamp),
-              style: theme.textTheme.displaySmall!
-                  .copyWith(color: AppColor.strong),
+              style: MyFonts.displaySmall
+                  .copyWith(color: Theme.of(context).colorScheme.primary),
               textAlign: TextAlign.start,
             )
           ]),
@@ -118,7 +122,9 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  Align chatbox2(ChatMessage msg, ThemeData theme) {
+  Align chatbox2(
+    ChatMessage msg,
+  ) {
     // اگر پیام کاربر باشد
     if (msg.isUser) {
       return Align(
@@ -130,7 +136,7 @@ class _ChatScreenState extends State<ChatScreen> {
             margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 3.w),
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
             decoration: BoxDecoration(
-              color: AppColor.active,
+              color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10),
                 topRight: Radius.circular(10),
@@ -144,14 +150,13 @@ class _ChatScreenState extends State<ChatScreen> {
                   Text(
                     //overflow: TextOverflow.ellipsis,
                     msg.message,
-                    style: theme.textTheme.bodyMedium!.copyWith(
-                      color: Colors.white,
-                    ),
+                    style: MyFonts.bodyMedium.copyWith(
+                        color: Theme.of(context).colorScheme.tertiary),
                   ),
                   Text(
                     msg.timestamp.formatTime(msg.timestamp),
-                    style: theme.textTheme.displaySmall!
-                        .copyWith(color: AppColor.strong),
+                    style: MyFonts.displaySmall
+                        .copyWith(color: Theme.of(context).colorScheme.primary),
                     textAlign: TextAlign.end,
                   )
                 ]),
@@ -167,7 +172,7 @@ class _ChatScreenState extends State<ChatScreen> {
             margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 3.w),
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
             decoration: BoxDecoration(
-              color: AppColor.normal,
+              color: Theme.of(context).colorScheme.inversePrimary,
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(10),
                 topLeft: Radius.circular(10),
@@ -179,14 +184,14 @@ class _ChatScreenState extends State<ChatScreen> {
               children: [
                 SelectableText(
                   msg.message,
-                  style: theme.textTheme.bodyMedium!.copyWith(
-                    color: Colors.white,
+                  style: MyFonts.bodyMedium.copyWith(
+                    color: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),
                 Text(
                   msg.timestamp.formatTime(msg.timestamp),
-                  style: theme.textTheme.displaySmall!
-                      .copyWith(color: AppColor.strong),
+                  style: MyFonts.displaySmall
+                      .copyWith(color: Theme.of(context).colorScheme.primary),
                   textAlign: TextAlign.start,
                 )
               ],
@@ -204,15 +209,16 @@ class _ChatScreenState extends State<ChatScreen> {
         margin: EdgeInsets.symmetric(vertical: 5.h),
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: msg.isUser ? AppColor.active : AppColor.normal,
+          color: msg.isUser
+              ? Theme.of(context).colorScheme.secondary
+              : Theme.of(context).colorScheme.inversePrimary,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(children: [
           Text(
             msg.message,
-            style: theme.textTheme.bodyMedium!.copyWith(
-              color: Colors.white,
-            ),
+            style: MyFonts.bodyMedium
+                .copyWith(color: Theme.of(context).colorScheme.tertiary),
           ),
           Text(msg.timestamp.formatTime(msg.timestamp))
         ]),
@@ -220,7 +226,7 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  Widget _buildInputField(ThemeData theme) {
+  Widget _buildInputField() {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 7.5.w),
       child: TextField(
@@ -228,13 +234,14 @@ class _ChatScreenState extends State<ChatScreen> {
         maxLines: 20,
         keyboardType: TextInputType.multiline,
         controller: _textController,
-        style: theme.textTheme.bodyLarge!.copyWith(color: AppColor.txgrey),
+        style: MyFonts.bodyLarge
+            .copyWith(color: Theme.of(context).colorScheme.primary),
         decoration: InputDecoration(
-          fillColor: AppColor.normal,
+          fillColor: Theme.of(context).colorScheme.inversePrimary,
           filled: true,
           hintText: 'Send a message',
-          hintStyle:
-              theme.textTheme.bodyMedium!.copyWith(color: AppColor.strong),
+          hintStyle: MyFonts.bodyMedium
+              .copyWith(color: Theme.of(context).colorScheme.primary),
           suffixIcon: InkWell(
             onTap: () {
               final text = _textController.text.trim();
@@ -247,7 +254,7 @@ class _ChatScreenState extends State<ChatScreen> {
             },
             child: Icon(
               Icons.send,
-              color: AppColor.strong,
+              color: Theme.of(context).colorScheme.primary,
             ),
           ),
           border: OutlineInputBorder(
@@ -255,11 +262,13 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: AppColor.active, width: 0),
+            borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.secondary, width: 0),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: AppColor.active, width: 0),
+            borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.secondary, width: 0),
           ),
         ),
       ),
