@@ -12,16 +12,17 @@ import 'package:my_chat_gpt/screens/login_screen.dart';
 import 'package:my_chat_gpt/screens/profile_screen.dart';
 import 'package:my_chat_gpt/screens/register_screen.dart';
 import 'package:my_chat_gpt/screens/setting_screen.dart';
-import 'package:my_chat_gpt/them/dark_mode.dart';
-import 'package:my_chat_gpt/them/light_mod.dart';
-import 'package:my_chat_gpt/them/theme.dart';
+import 'package:my_chat_gpt/them/theme_provider.dart';
 import 'package:my_chat_gpt/util/auth_manager.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await getItInit();
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    child: const MyApp(),
+    create: (context) => ThemeProvider(),
+  ));
   ChatDatabase.instance.database;
 }
 
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           // themeMode: ThemeMode.dark,
-          theme: lightMode,
+          theme: Provider.of<ThemeProvider>(context).themeData,
           // AppThem().themData,
           routes: {
             '/register': (context) => const RegisterScreen(),
