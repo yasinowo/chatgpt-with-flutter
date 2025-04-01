@@ -23,6 +23,9 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  Map<String, bool> _animationShown = {}; // برای ردیابی نمایش انیمیشن
+  Map<String, bool> _animationFinished = {}; // برای ردیابی اتمام انیمیشن
+
   final ScrollController _controller = ScrollController();
   final TextEditingController _textController = TextEditingController();
   List<Message> messages = [];
@@ -62,9 +65,16 @@ class _ChatScreenState extends State<ChatScreen> {
                       if (!msg.isUser &&
                           index == messages.length - 1 &&
                           lastMessage == true) {
-                        return lastMessageAiWithAnimated(
-                          msg,
-                        );
+                        if (_animationFinished[msg.timestamp] == true) {
+                          // اگر انیمیشن به اتمام رسیده است، chatbox2 را نمایش بده
+                          return chatbox2(msg);
+                        } else {
+                          // اگر انیمیشن هنوز به اتمام نرسیده است، lastMessageAiWithAnimated را نمایش بده
+                          return lastMessageAiWithAnimated(msg);
+                        }
+                        // return lastMessageAiWithAnimated(
+                        //   msg,
+                        // );
                       }
 
                       // پیام‌های عادی (کاربر یا پیام‌های قبلی هوش مصنوعی)
@@ -85,8 +95,19 @@ class _ChatScreenState extends State<ChatScreen> {
   Align lastMessageAiWithAnimated(
     Message msg,
   ) {
-    lastMessage = false;
+    // lastMessage = false;
     int totalRepeatCount = 1;
+    if (_animationFinished[msg.timestamp] == true) {
+      // اگر انیمیشن به اتمام رسیده است، chatbox2 را نمایش بده
+      return chatbox2(msg);
+    }
+    if (_animationShown[msg.timestamp] == true) {
+      // اگر انیمیشن به اتمام رسیده است، chatbox2 را نمایش بده
+
+      return chatbox2(msg);
+    }
+    _animationShown[msg.timestamp] = true; // نمایش انیمیشن
+
     return Align(
       alignment: Alignment.centerLeft,
       child: ConstrainedBox(
@@ -124,11 +145,11 @@ class _ChatScreenState extends State<ChatScreen> {
               style: MyFonts.bodyMedium.copyWith(
                 color: Theme.of(context).colorScheme.tertiary,
               ),
-              // onFinished: () {
-              //   setState(() {
-              //     // isAnimated = !isAnimated;
-              //   });
-              // },
+              onFinished: () {
+                setState(() {
+                  _animationFinished[msg.timestamp] = true; // اتمام انیمیشن
+                });
+              },
               speed: const Duration(milliseconds: 15),
             ),
             Text(
