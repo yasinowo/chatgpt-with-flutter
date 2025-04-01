@@ -104,33 +104,33 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            AnimatedTextKit(
-              totalRepeatCount: totalRepeatCount,
-              animatedTexts: [
-                TypewriterAnimatedText(
-                  msg.message,
-                  textStyle: MyFonts.bodyMedium.copyWith(
-                    color: Theme.of(context).colorScheme.tertiary,
-                  ),
-                  speed: Duration(milliseconds: 15),
-                ),
-              ],
-              // onFinished: () {
-              //   // setState(() {});
-              // },
-            ),
-            // StreamTypewriterAnimatedText(
-            //   text: msg.message,
-            //   style: MyFonts.bodyMedium.copyWith(
-            //     color: Theme.of(context).colorScheme.tertiary,
-            //   ),
-            //   onFinished: () {
-            //     // setState(() {
-            //     //   // isAnimated = !isAnimated;
-            //     // });
-            //   },
-            //   speed: const Duration(milliseconds: 15),
+            // AnimatedTextKit(
+            //   totalRepeatCount: totalRepeatCount,
+            //   animatedTexts: [
+            //     TypewriterAnimatedText(
+            //       msg.message,
+            //       textStyle: MyFonts.bodyMedium.copyWith(
+            //         color: Theme.of(context).colorScheme.tertiary,
+            //       ),
+            //       speed: Duration(milliseconds: 15),
+            //     ),
+            //   ],
+            //   // onFinished: () {
+            //   //   // setState(() {});
+            //   // },
             // ),
+            StreamTypewriterAnimatedText(
+              text: msg.message,
+              style: MyFonts.bodyMedium.copyWith(
+                color: Theme.of(context).colorScheme.tertiary,
+              ),
+              // onFinished: () {
+              //   setState(() {
+              //     // isAnimated = !isAnimated;
+              //   });
+              // },
+              speed: const Duration(milliseconds: 15),
+            ),
             Text(
               msg.timestamp.formatTime(msg.timestamp),
               style: MyFonts.displaySmall
@@ -281,13 +281,12 @@ class _ChatScreenState extends State<ChatScreen> {
           suffixIcon: InkWell(
             onTap: () {
               final text = _textController.text.trim();
-              if (text.isNotEmpty) {
+              if (_textController.text.isNotEmpty) {
                 _saveMessage(text, true); // ذخیره پیام کاربر
+                lastMessage = true;
                 context.read<MassageBloc>().add(SendMassageE(text));
                 _textController.clear();
                 _scrollToBottom();
-
-                lastMessage = true;
               }
             },
             child: Icon(
