@@ -1,7 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpt_markdown/gpt_markdown.dart';
 import 'package:my_chat_gpt/bloc/massege/massage_bloc.dart';
@@ -11,7 +10,6 @@ import 'package:my_chat_gpt/components/drawer_global.dart';
 import 'package:my_chat_gpt/data/database/chat_database.dart';
 import 'package:my_chat_gpt/model/massage.dart';
 import 'package:my_chat_gpt/them/fonts_style.dart';
-import 'package:my_chat_gpt/util/code_bloc.dart';
 import 'package:my_chat_gpt/util/extentions.dart';
 import 'package:my_chat_gpt/components/appbar_global.dart';
 import 'package:stream_typewriter_text/stream_typewriter_text.dart';
@@ -88,6 +86,7 @@ class _ChatScreenState extends State<ChatScreen> {
     Message msg,
   ) {
     lastMessage = false;
+    int totalRepeatCount = 1;
     return Align(
       alignment: Alignment.centerLeft,
       child: ConstrainedBox(
@@ -105,33 +104,33 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            // AnimatedTextKit(
-            //   totalRepeatCount: 1,
-            //   animatedTexts: [
-            //     TypewriterAnimatedText(
-            //       msg.message,
-            //       textStyle: MyFonts.bodyMedium.copyWith(
-            //         color: Theme.of(context).colorScheme.tertiary,
-            //       ),
-            //       speed: Duration(milliseconds: 20),
-            //     ),
-            //   ],
-            //   // onFinished: () {
-            //   //   // setState(() {});
-            //   // },
-            // ),
-            StreamTypewriterAnimatedText(
-              text: msg.message,
-              style: MyFonts.bodyMedium.copyWith(
-                color: Theme.of(context).colorScheme.tertiary,
-              ),
-              onFinished: () {
-                // setState(() {
-                //   // isAnimated = !isAnimated;
-                // });
-              },
-              speed: const Duration(milliseconds: 15),
+            AnimatedTextKit(
+              totalRepeatCount: totalRepeatCount,
+              animatedTexts: [
+                TypewriterAnimatedText(
+                  msg.message,
+                  textStyle: MyFonts.bodyMedium.copyWith(
+                    color: Theme.of(context).colorScheme.tertiary,
+                  ),
+                  speed: Duration(milliseconds: 15),
+                ),
+              ],
+              // onFinished: () {
+              //   // setState(() {});
+              // },
             ),
+            // StreamTypewriterAnimatedText(
+            //   text: msg.message,
+            //   style: MyFonts.bodyMedium.copyWith(
+            //     color: Theme.of(context).colorScheme.tertiary,
+            //   ),
+            //   onFinished: () {
+            //     // setState(() {
+            //     //   // isAnimated = !isAnimated;
+            //     // });
+            //   },
+            //   speed: const Duration(milliseconds: 15),
+            // ),
             Text(
               msg.timestamp.formatTime(msg.timestamp),
               style: MyFonts.displaySmall
