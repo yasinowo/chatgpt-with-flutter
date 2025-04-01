@@ -106,28 +106,33 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            AnimatedTextKit(
-              totalRepeatCount: 1,
-              animatedTexts: [
-                TypewriterAnimatedText(
-                  msg.message,
-                  textStyle: MyFonts.bodyMedium.copyWith(
-                    color: Theme.of(context).colorScheme.tertiary,
-                  ),
-                  speed: Duration(milliseconds: 20),
-                ),
-              ],
-              onFinished: () {},
-            ),
-            // StreamTypewriterAnimatedText(
-            //   text: msg.message,
-            //   style: MyFonts.bodyMedium.copyWith(
-            //     color: Theme.of(context).colorScheme.tertiary,
-            //   ),
-            //   onFinished: () {
-            //   },
-            //   speed: const Duration(milliseconds: 25),
+            // AnimatedTextKit(
+            //   totalRepeatCount: 1,
+            //   animatedTexts: [
+            //     TypewriterAnimatedText(
+            //       msg.message,
+            //       textStyle: MyFonts.bodyMedium.copyWith(
+            //         color: Theme.of(context).colorScheme.tertiary,
+            //       ),
+            //       speed: Duration(milliseconds: 20),
+            //     ),
+            //   ],
+            //   // onFinished: () {
+            //   //   // setState(() {});
+            //   // },
             // ),
+            StreamTypewriterAnimatedText(
+              text: msg.message,
+              style: MyFonts.bodyMedium.copyWith(
+                color: Theme.of(context).colorScheme.tertiary,
+              ),
+              onFinished: () {
+                // setState(() {
+                //   // isAnimated = !isAnimated;
+                // });
+              },
+              speed: const Duration(milliseconds: 25),
+            ),
             Text(
               msg.timestamp.formatTime(msg.timestamp),
               style: MyFonts.displaySmall
