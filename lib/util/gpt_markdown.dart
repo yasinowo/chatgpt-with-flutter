@@ -3,8 +3,8 @@ import 'package:gpt_markdown/custom_widgets/markdown_config.dart';
 import 'package:gpt_markdown/gpt_markdown.dart';
 
 /// This widget create a full markdown widget as a column view.
-class GptMarkdown extends StatelessWidget {
-  const GptMarkdown(
+class GptMarkdown2 extends StatelessWidget {
+  const GptMarkdown2(
     this.data, {
     super.key,
     this.style,

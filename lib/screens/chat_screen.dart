@@ -188,16 +188,17 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // MarkdownBody(data: msg.message),
-                GptMarkdown(
-                  msg.message,
-                  style: MyFonts.bodyMedium
-                      .copyWith(color: Theme.of(context).colorScheme.tertiary),
-                  overflow: TextOverflow.ellipsis,
-                  // codeBuilder: (context, name, code, closed) {
-                  //   return CodeBlock(code: code);
-                  // },
-                ),
+                MarkdownBody(data: msg.message),
+                // GptMarkdown(
+                //   msg.message,
+                //   style: MyFonts.bodyMedium
+                //       .copyWith(color: Theme.of(context).colorScheme.tertiary),
+                //   overflow: TextOverflow.ellipsis,
+                //   // codeBuilder: (context, name, code, closed) {
+                //   //   return CodeBlock(code: code);
+                //   // },
+                // ),
+                //
                 // SelectableText(
                 //   msg.message,
                 //   style: MyFonts.bodyMedium.copyWith(
