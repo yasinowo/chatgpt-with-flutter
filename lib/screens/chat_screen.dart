@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -64,6 +65,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           index == messages.length - 1 &&
                           lastMessage == true) {
                         lastMessage = false;
+
                         return lastMessageAiWithAnimated(
                           msg,
                         );
@@ -104,18 +106,28 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            StreamTypewriterAnimatedText(
-              text: msg.message,
-              style: MyFonts.bodyMedium.copyWith(
-                color: Theme.of(context).colorScheme.tertiary,
-              ),
-              onFinished: () {
-                setState(() {
-                  // isAnimated = !isAnimated;
-                });
-              },
-              speed: const Duration(milliseconds: 50),
+            AnimatedTextKit(
+              totalRepeatCount: 1,
+              animatedTexts: [
+                TypewriterAnimatedText(
+                  msg.message,
+                  textStyle: MyFonts.bodyMedium.copyWith(
+                    color: Theme.of(context).colorScheme.tertiary,
+                  ),
+                  speed: Duration(milliseconds: 20),
+                ),
+              ],
+              onFinished: () {},
             ),
+            // StreamTypewriterAnimatedText(
+            //   text: msg.message,
+            //   style: MyFonts.bodyMedium.copyWith(
+            //     color: Theme.of(context).colorScheme.tertiary,
+            //   ),
+            //   onFinished: () {
+            //   },
+            //   speed: const Duration(milliseconds: 25),
+            // ),
             Text(
               msg.timestamp.formatTime(msg.timestamp),
               style: MyFonts.displaySmall
@@ -271,6 +283,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 context.read<MassageBloc>().add(SendMassageE(text));
                 _textController.clear();
                 _scrollToBottom();
+
                 lastMessage = true;
               }
             },
