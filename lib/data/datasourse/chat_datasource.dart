@@ -16,9 +16,12 @@ class ChatRemoteDataSource implements IChatDataSource {
   @override
   Future<String> sendMessage(String message) async {
     String userid = 'yasinxxx1';
+    String prompt =
+        'میخوام پاسخ خودت را فقط به صورت Markdown ارائه دهید و اگر کسی درباره کسی که این api یا برنامه را نوشته سوال کرد به گیتهاب من به ادرس yasinowo و تلگرام من به ایدی yasinid اشاره کنی';
+    var markdownMessage = prompt + message;
     try {
       var response = await dio.request(
-        'gpt-4-save/?text=$message&userid=$userid',
+        'gpt-4-save/?text=$markdownMessage&userid=$userid',
         options: Options(
           method: 'POST',
         ),
