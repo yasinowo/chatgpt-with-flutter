@@ -34,7 +34,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _loadMessages(); // بارگذاری پیام‌های ذخیره‌شده
   }
 
-  bool? lastMessage;
+  bool lastMessage = false;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -64,8 +64,6 @@ class _ChatScreenState extends State<ChatScreen> {
                       if (!msg.isUser &&
                           index == messages.length - 1 &&
                           lastMessage == true) {
-                        lastMessage = false;
-
                         return lastMessageAiWithAnimated(
                           msg,
                         );
@@ -89,6 +87,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Align lastMessageAiWithAnimated(
     Message msg,
   ) {
+    lastMessage = false;
     return Align(
       alignment: Alignment.centerLeft,
       child: ConstrainedBox(
@@ -131,7 +130,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 //   // isAnimated = !isAnimated;
                 // });
               },
-              speed: const Duration(milliseconds: 25),
+              speed: const Duration(milliseconds: 15),
             ),
             Text(
               msg.timestamp.formatTime(msg.timestamp),
