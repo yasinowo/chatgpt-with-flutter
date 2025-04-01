@@ -14,6 +14,7 @@ import 'package:my_chat_gpt/util/code_bloc.dart';
 import 'package:my_chat_gpt/util/extentions.dart';
 import 'package:my_chat_gpt/components/appbar_global.dart';
 import 'package:stream_typewriter_text/stream_typewriter_text.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -26,7 +27,6 @@ class _ChatScreenState extends State<ChatScreen> {
   final ScrollController _controller = ScrollController();
   final TextEditingController _textController = TextEditingController();
   List<Message> messages = [];
-  // bool isAnimated = false;
   @override
   void initState() {
     super.initState();
@@ -189,23 +189,26 @@ class _ChatScreenState extends State<ChatScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // MarkdownBody(data: msg.message,),
-                GptMarkdown(
-                  msg.message,
-                  style: MyFonts.bodyMedium
-                      .copyWith(color: Theme.of(context).colorScheme.tertiary),
-                  overflow: TextOverflow.ellipsis,
+                SelectionArea(
+                  child: GptMarkdown(
+                    msg.message,
+                    style: MyFonts.bodyMedium.copyWith(
+                        color: Theme.of(context).colorScheme.tertiary),
+                    // overflow: TextOverflow.ellipsis,
+                    onLinkTab: (url, title) => launchUrl(Uri.parse(url)),
 
-                  // codeBuilder: (context, name, code, closed) {
-                  //   return CodeBlock(code: code);
-                  // },
-                ),
-                //
-                SelectableText(
-                  msg.message,
-                  style: MyFonts.bodyMedium.copyWith(
-                    color: Theme.of(context).colorScheme.tertiary,
+                    // codeBuilder: (context, name, code, closed) {
+                    //   return CodeBlock(code: code);
+                    // },
                   ),
                 ),
+                //
+                // SelectableText(
+                //   msg.message,
+                //   style: MyFonts.bodyMedium.copyWith(
+                //     color: Theme.of(context).colorScheme.tertiary,
+                //   ),
+                // ),
                 Text(
                   msg.timestamp.formatTime(msg.timestamp),
                   style: MyFonts.displaySmall
