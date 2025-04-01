@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpt_markdown/gpt_markdown.dart';
 import 'package:my_chat_gpt/bloc/massege/massage_bloc.dart';
@@ -9,6 +10,7 @@ import 'package:my_chat_gpt/components/drawer_global.dart';
 import 'package:my_chat_gpt/data/database/chat_database.dart';
 import 'package:my_chat_gpt/model/massage.dart';
 import 'package:my_chat_gpt/them/fonts_style.dart';
+import 'package:my_chat_gpt/util/code_bloc.dart';
 import 'package:my_chat_gpt/util/extentions.dart';
 import 'package:my_chat_gpt/components/appbar_global.dart';
 import 'package:stream_typewriter_text/stream_typewriter_text.dart';
@@ -186,18 +188,22 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // MarkdownBody(data: msg.message),
                 GptMarkdown(
                   msg.message,
-                  style: const TextStyle(
-                    color: Colors.red,
-                  ),
+                  style: MyFonts.bodyMedium
+                      .copyWith(color: Theme.of(context).colorScheme.tertiary),
+                  overflow: TextOverflow.ellipsis,
+                  // codeBuilder: (context, name, code, closed) {
+                  //   return CodeBlock(code: code);
+                  // },
                 ),
-                SelectableText(
-                  msg.message,
-                  style: MyFonts.bodyMedium.copyWith(
-                    color: Theme.of(context).colorScheme.tertiary,
-                  ),
-                ),
+                // SelectableText(
+                //   msg.message,
+                //   style: MyFonts.bodyMedium.copyWith(
+                //     color: Theme.of(context).colorScheme.tertiary,
+                //   ),
+                // ),
                 Text(
                   msg.timestamp.formatTime(msg.timestamp),
                   style: MyFonts.displaySmall
@@ -310,7 +316,7 @@ class _ChatScreenState extends State<ChatScreen> {
     Future.delayed(Duration(milliseconds: 300), () {
       _controller.animateTo(
         _controller.position.maxScrollExtent,
-        duration: Duration(milliseconds: 300),
+        duration: Duration(milliseconds: 100),
         curve: Curves.easeOut,
       );
     });

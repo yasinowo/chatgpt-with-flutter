@@ -17,7 +17,12 @@ class ChatRemoteDataSource implements IChatDataSource {
   Future<String> sendMessage(String message) async {
     String userid = 'yasinxxx1';
     String prompt =
-        'میخوام پاسخ خودت را فقط به صورت Markdown ارائه دهید و اگر کسی درباره کسی که این api یا برنامه را نوشته سوال کرد به گیتهاب من به ادرس yasinowo و تلگرام من به ایدی yasinid اشاره کنی';
+        'Please provide your response in Markdown format. If the response contains code, enclose it in a code block using three backticks (```). Present regular text without any code blocks. For example:Regular text.```java// Java codepublic class HelloWorld {public static void main(String[] args) {System.out.println(Hello, World!);  }}```';
+    String prompt2 =
+        '1. I want you to provide your answer only in Markdown |2. Only if the users question asks about the person who wrote this API or program, please refer to my GitHub address yasinowo and my Telegram ID yasinid ';
+    String prompt3 =
+        '|3. Code blocks should be marked with special characters such as (three backticks).|4. In the answer you give in markdown, I dont want the entire text to be in ``` , just the part that has the code I dont want you to answer like this```markdown ```code ..... ``` ```. I want it to be like this``` cod ```. Thats all.';
+
     var markdownMessage = prompt + message;
     try {
       var response = await dio.request(
@@ -29,7 +34,8 @@ class ChatRemoteDataSource implements IChatDataSource {
 
       if (response.statusCode == 200) {
         var text = response.data;
-        print(text);
+        // var text2 = codeChecker(text);
+        // print(text);
         return text;
       } else {
         print(response.statusMessage);
