@@ -39,36 +39,40 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      // Use builder only if you need to use library outside ScreenUtilInit context
-      builder: (_, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          // themeMode: ThemeMode.dark,
-          theme: Provider.of<ThemeProvider>(context).themeData,
-          // AppThem().themData,
-          routes: {
-            '/register': (context) => const RegisterScreen(),
-            '/login': (context) => const LoginScreen(),
-            '/chat': (context) => const ChatScreen(),
-            '/setting': (context) => const SettingScreen(),
-            '/profile': (context) => const ProfileScreen(),
-          },
-          // You can use the library anywhere in the app even in theme
-          home: child,
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        // Use builder only if you need to use library outside ScreenUtilInit context
+        builder: (_, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            // themeMode: ThemeMode.dark,
+            theme: Provider.of<ThemeProvider>(context).themeData,
+            // AppThem().themData,
+            routes: {
+              '/register': (context) => const RegisterScreen(),
+              '/login': (context) => const LoginScreen(),
+              '/chat': (context) => const ChatScreen(),
+              '/setting': (context) => const SettingScreen(),
+              '/profile': (context) => const ProfileScreen(),
+            },
+            // You can use the library anywhere in the app even in theme
+            home: child,
+          );
+        },
+        child: BlocProvider(
+          create: (context) => AuthBloc(),
+          child: RegisterScreen(),
+        )
+        //  (AuthManager.hasUsername() == false)
+        //     ? BlocProvider(
+        //         create: (context) => AuthBloc(),
+        //         child: LoginScreen(),
+        //       )
+        //     : BlocProvider(
+        //         create: (context) => MassageBloc(),
+        //         child: ChatScreen(),
+        //       ),
         );
-      },
-      child: (AuthManager.hasUsername() == false)
-          ? BlocProvider(
-              create: (context) => AuthBloc(),
-              child: LoginScreen(),
-            )
-          : BlocProvider(
-              create: (context) => MassageBloc(),
-              child: ChatScreen(),
-            ),
-    );
   }
 }

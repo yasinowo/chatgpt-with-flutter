@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: theme.colorScheme.surface,
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is AuthResponseS) {
+          if (state is AuthSuccess) {
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) => BlocProvider(
@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ElevatedButtonGlobal(
                         text: 'Login',
                         formKey: _formKey,
-                        usernameController: usernameController,
+                        emailController: usernameController,
                         passwordController: passwordController,
                       ),
                     ),
