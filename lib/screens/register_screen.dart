@@ -14,11 +14,15 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController fullnameController = TextEditingController();
+  final TextEditingController nameController =
+      TextEditingController(text: 'test');
+  final TextEditingController emailController =
+      TextEditingController(text: 'test@gmail.com');
+
   final TextEditingController passwordConfirmController =
-      TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+      TextEditingController(text: '12345678');
+  final TextEditingController passwordController =
+      TextEditingController(text: '12345678');
 
   final GlobalKey<FormState> _formKey =
       GlobalKey<FormState>(); // اضافه کردن کلید فرم
@@ -55,16 +59,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             .copyWith(color: theme.colorScheme.primary),
                       ),
                     ),
+                    // Padding(
+                    //     padding: EdgeInsets.symmetric(vertical: 10.h),
+                    //     child: TextFildGlobal(
+                    //       controller: nameController,
+                    //       text: 'Full Name',
+                    //     )),
                     Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10.h),
+                        padding: EdgeInsets.only(bottom: 10.h, top: 30.h),
                         child: TextFildGlobal(
-                          controller: fullnameController,
-                          text: 'Full Name',
-                        )),
-                    Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: TextFildGlobal(
-                          controller: usernameController,
+                          controller: emailController,
                           text: 'Email Address',
                         )),
                     Padding(
@@ -86,6 +90,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: ElevatedButtonGlobal(
                         text: 'Sign Up',
                         formKey: _formKey,
+                        emailController: emailController,
+                        passwordController: passwordController,
                       ),
                     ),
                     Padding(

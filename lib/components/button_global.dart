@@ -49,7 +49,7 @@ class ElevatedButtonGlobal extends StatelessWidget {
 
       if (text == 'Login') {
         BlocProvider.of<AuthBloc>(context).add(SignIn(user));
-      } else if (text == 'Sign up') {
+      } else if (text == 'Sign Up') {
         BlocProvider.of<AuthBloc>(context).add(SignUp(user));
       }
     } else {

@@ -24,8 +24,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         try {
           final user = await _signUpUseCase.execute(event.user);
           yield AuthSuccess(user);
+          print(user);
         } catch (e) {
           yield AuthFailure(e.toString());
+          print(e.toString());
         }
       }
       if (event is SignIn) {
