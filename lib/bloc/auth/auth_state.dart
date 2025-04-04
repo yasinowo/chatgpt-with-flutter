@@ -5,6 +5,15 @@ sealed class AuthState {}
 
 final class AuthInitial extends AuthState {}
 
-final class AuthLoadingS extends AuthState {}
+final class AuthLoading extends AuthState {}
 
-final class AuthResponseS extends AuthState {}
+final class AuthSuccess extends AuthState {
+  final User? user;
+  AuthSuccess(this.user);
+}
+
+class AuthFailure extends AuthState {
+  final String error;
+
+  AuthFailure(this.error);
+}

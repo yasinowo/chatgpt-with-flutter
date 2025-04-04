@@ -3,35 +3,48 @@
 import 'package:bloc/bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
+import 'package:my_chat_gpt/bloc/auth/auth_usecase.dart';
 import 'package:my_chat_gpt/data/repository/auth_repository.dart';
+import 'package:my_chat_gpt/model/user.dart';
 import 'package:my_chat_gpt/util/auth_manager.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final AuthRepository _repository = AuthRepository();
+  final SignUpUseCase _signUpUseCase = SignUpUseCase();
 
   AuthBloc() : super(AuthInitial()) {
-    if (event is SignUpEvent) {
-      yield AuthLoading();
-      try {
-        final user = await _repository.signUp(user);
-        yield AuthSuccess(user);
-      } catch (e) {
-        yield AuthFailure(e.toString());
+    @override
+    Stream<AuthState> mapEventToState(AuthEvent event) async* {
+      if (event is SignUp) {
+        yield AuthLoading();
+        try {
+          final user = await _signUpUseCase.execute(event.user);
+          yield AuthSuccess(user);
+        } catch (e) {
+          yield AuthFailure(e.toString());
+        }
+      }
+      if (event is SignIn) {
+        yield AuthLoading();
+        try {
+          final user = await _signinUseCase.execute(event.user);
+          yield AuthSuccess(user);
+        } catch (e) {
+          yield AuthFailure(e.toString());
+        }
       }
     }
-    // ... سایر رویدادها
   }
-    //befor supabase i create
-    // on<AuthLoginRequestE>((event, emit) async {
-    //   emit(AuthLoadingS());
-    //   AuthManager.saveUsername(event.username);
-    //   emit(AuthResponseS());
-    //   print('login success : $event.username');
-    // });
-  }
+  //befor supabase i create
+  // on<AuthLoginRequestE>((event, emit) async {
+  //   emit(AuthLoadingS());
+  //   AuthManager.saveUsername(event.username);
+  //   emit(AuthResponseS());
+  //   print('login success : $event.username');
+  // });
+}
 
 // class AuthBloc extends Bloc<AuthEvent, AuthState> {
 //   final IAuthRepasitory repository = locator.get();

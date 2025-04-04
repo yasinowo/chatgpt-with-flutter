@@ -39,7 +39,7 @@ class ElevatedButtonGlobal extends StatelessWidget {
         }
         //login button
         if (text == 'Login') {
-          BlocProvider.of<AuthBloc>(context).add(AuthLoginRequestE(
+          BlocProvider.of<AuthBloc>(context).add(SignUp(
             usernameController!.text,
             passwordController!.text,
           ));
