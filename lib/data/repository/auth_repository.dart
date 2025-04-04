@@ -1,5 +1,5 @@
 import 'package:my_chat_gpt/data/datasourse/auth_datasourse.dart';
-import 'package:my_chat_gpt/model/user.dart';
+import 'package:my_chat_gpt/model/user_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class IAuthRepository {

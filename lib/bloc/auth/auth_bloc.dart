@@ -5,7 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:my_chat_gpt/bloc/auth/auth_usecase.dart';
 import 'package:my_chat_gpt/data/repository/auth_repository.dart';
-import 'package:my_chat_gpt/model/user.dart';
+import 'package:my_chat_gpt/model/user_model.dart';
 import 'package:my_chat_gpt/util/auth_manager.dart';
 
 part 'auth_event.dart';

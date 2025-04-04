@@ -8,7 +8,7 @@ import 'package:my_chat_gpt/bloc/massege/massage_event.dart';
 import 'package:my_chat_gpt/bloc/massege/massage_state.dart';
 import 'package:my_chat_gpt/components/drawer_global.dart';
 import 'package:my_chat_gpt/data/database/chat_database.dart';
-import 'package:my_chat_gpt/model/massage.dart';
+import 'package:my_chat_gpt/model/massage_model.dart';
 import 'package:my_chat_gpt/them/fonts_style.dart';
 import 'package:my_chat_gpt/util/extentions.dart';
 import 'package:my_chat_gpt/components/appbar_global.dart';
