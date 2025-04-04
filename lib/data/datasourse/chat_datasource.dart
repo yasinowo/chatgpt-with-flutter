@@ -16,6 +16,8 @@ class ChatRemoteDataSource implements IChatDataSource {
   @override
   Future<String> sendMessage(String message) async {
     String userid = 'yasinxxx1';
+    String FQA =
+        'If they ask who developed you or its difficult, point them to my Telegram link: t.me/yasinid and my GitHub at github.com/yasinowo/ and tell them they can contact me that way.';
     String prompt =
         'Please provide your response in Markdown format And you dont want to us ``` in the text (in any form or style).. If the response contains code,Specify a topic with ``` according to the request enclose it in a code block using three backticks (```). Present regular text without any code blocks.';
     // String prompt2 =
@@ -23,7 +25,7 @@ class ChatRemoteDataSource implements IChatDataSource {
     // String prompt3 =
     //     '|3. Code blocks should be marked with special characters such as (three backticks).|4. In the answer you give in markdown, I dont want the entire text to be in ``` , just the part that has the code I dont want you to answer like this```markdown ```code ..... ``` ```. I want it to be like this``` cod ```. Thats all.';
 
-    var markdownMessage = prompt + message;
+    var markdownMessage = '$prompt + $FQA + this is messege: $message';
     try {
       var response = await dio.request(
         'gpt-4-save/?text=$markdownMessage&userid=$userid',

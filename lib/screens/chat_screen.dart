@@ -33,7 +33,6 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     super.initState();
     _loadMessages(); // بارگذاری پیام‌های ذخیره‌شده
-    _scrollToBottom;
   }
 
   bool lastMessage = false;
@@ -339,6 +338,7 @@ class _ChatScreenState extends State<ChatScreen> {
     setState(() {
       messages = dbMessages;
     });
+    _scrollToBottom();
   }
 
   Future<void> _saveMessage(String message, bool isUser) async {
@@ -355,12 +355,14 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _scrollToBottom() {
-    Future.delayed(Duration(milliseconds: 300), () {
-      _controller.animateTo(
-        _controller.position.maxScrollExtent,
-        duration: Duration(milliseconds: 100),
-        curve: Curves.easeOut,
-      );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_controller.hasClients) {
+        _controller.animateTo(
+          _controller.position.maxScrollExtent,
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeOut,
+        );
+      }
     });
   }
 }
