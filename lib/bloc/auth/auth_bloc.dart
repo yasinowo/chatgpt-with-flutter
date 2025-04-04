@@ -3,19 +3,34 @@
 import 'package:bloc/bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
+import 'package:my_chat_gpt/data/repository/auth_repository.dart';
 import 'package:my_chat_gpt/util/auth_manager.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
+  final AuthRepository _repository = AuthRepository();
+
   AuthBloc() : super(AuthInitial()) {
-    on<AuthLoginRequestE>((event, emit) async {
-      emit(AuthLoadingS());
-      AuthManager.saveUsername(event.username);
-      emit(AuthResponseS());
-      print('login success : $event.username');
-    });
+    if (event is SignUpEvent) {
+      yield AuthLoading();
+      try {
+        final user = await _repository.signUp(user);
+        yield AuthSuccess(user);
+      } catch (e) {
+        yield AuthFailure(e.toString());
+      }
+    }
+    // ... سایر رویدادها
+  }
+    //befor supabase i create
+    // on<AuthLoginRequestE>((event, emit) async {
+    //   emit(AuthLoadingS());
+    //   AuthManager.saveUsername(event.username);
+    //   emit(AuthResponseS());
+    //   print('login success : $event.username');
+    // });
   }
 }
 // class AuthBloc extends Bloc<AuthEvent, AuthState> {

@@ -15,10 +15,15 @@ import 'package:my_chat_gpt/screens/setting_screen.dart';
 import 'package:my_chat_gpt/them/theme_provider.dart';
 import 'package:my_chat_gpt/util/auth_manager.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await getItInit();
+  await Supabase.initialize(
+    url: SUPABASE_URL,
+    anonKey: SUPABASE_ANON_KEY,
+  );
   runApp(ChangeNotifierProvider(
     child: const MyApp(),
     create: (context) => ThemeProvider(),
