@@ -58,12 +58,7 @@ class AppbarGlobal extends StatelessWidget implements PreferredSizeWidget {
       onSelected: (value) {
         if (value == 'logout') {
           AuthManager.logout();
-          Navigator.pushReplacementNamed(context, '/Login');
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => const LoginScreen(),
-            ),
-          );
+          Navigator.pushReplacementNamed(context, '/login');
         }
       },
       itemBuilder: (BuildContext context) {

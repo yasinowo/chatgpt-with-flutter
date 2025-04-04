@@ -33,60 +33,64 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     super.initState();
     _loadMessages(); // بارگذاری پیام‌های ذخیره‌شده
+    _scrollToBottom;
   }
 
   bool lastMessage = false;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppbarGlobal(),
-        drawer: DrawerGlobal(),
-        backgroundColor: theme.scaffoldBackgroundColor,
-        body: Column(
-          children: [
-            Expanded(
-              child: BlocConsumer<MassageBloc, MassageState>(
-                listener: (context, state) {
-                  if (state is MessageResponseS) {
-                    _saveMessage(
-                        state.response, false); // ذخیره پاسخ هوش مصنوعی
-                  }
-                },
-                builder: (context, state) {
-                  return ListView.builder(
-                    controller: _controller,
-                    itemCount: messages.length,
-                    itemBuilder: (context, index) {
-                      final msg = messages[index];
+    return BlocProvider(
+      create: (context) => MassageBloc(),
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppbarGlobal(),
+          drawer: DrawerGlobal(),
+          backgroundColor: theme.scaffoldBackgroundColor,
+          body: Column(
+            children: [
+              Expanded(
+                child: BlocConsumer<MassageBloc, MassageState>(
+                  listener: (context, state) {
+                    if (state is MessageResponseS) {
+                      _saveMessage(
+                          state.response, false); // ذخیره پاسخ هوش مصنوعی
+                    }
+                  },
+                  builder: (context, state) {
+                    return ListView.builder(
+                      controller: _controller,
+                      itemCount: messages.length,
+                      itemBuilder: (context, index) {
+                        final msg = messages[index];
 
-                      // اگر پیام، پاسخ هوش مصنوعی و آخرین پیام باشد، از انیمیشن استفاده کن
-                      if (!msg.isUser &&
-                          index == messages.length - 1 &&
-                          lastMessage == true) {
-                        if (_animationFinished[msg.timestamp] == true) {
-                          // اگر انیمیشن به اتمام رسیده است، chatbox2 را نمایش بده
-                          return chatbox2(msg);
-                        } else {
-                          // اگر انیمیشن هنوز به اتمام نرسیده است، lastMessageAiWithAnimated را نمایش بده
-                          return lastMessageAiWithAnimated(msg);
+                        // اگر پیام، پاسخ هوش مصنوعی و آخرین پیام باشد، از انیمیشن استفاده کن
+                        if (!msg.isUser &&
+                            index == messages.length - 1 &&
+                            lastMessage == true) {
+                          if (_animationFinished[msg.timestamp] == true) {
+                            // اگر انیمیشن به اتمام رسیده است، chatbox2 را نمایش بده
+                            return chatbox2(msg);
+                          } else {
+                            // اگر انیمیشن هنوز به اتمام نرسیده است، lastMessageAiWithAnimated را نمایش بده
+                            return lastMessageAiWithAnimated(msg);
+                          }
+                          // return lastMessageAiWithAnimated(
+                          //   msg,
+                          // );
                         }
-                        // return lastMessageAiWithAnimated(
-                        //   msg,
-                        // );
-                      }
 
-                      // پیام‌های عادی (کاربر یا پیام‌های قبلی هوش مصنوعی)
-                      return chatbox2(msg);
-                      //chatbox1(msg, theme);
-                    },
-                  );
-                },
+                        // پیام‌های عادی (کاربر یا پیام‌های قبلی هوش مصنوعی)
+                        return chatbox2(msg);
+                        //chatbox1(msg, theme);
+                      },
+                    );
+                  },
+                ),
               ),
-            ),
-            _buildInputField(),
-          ],
+              _buildInputField(),
+            ],
+          ),
         ),
       ),
     );

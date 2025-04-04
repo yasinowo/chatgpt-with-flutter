@@ -38,13 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
         body: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
             if (state is AuthSuccess) {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => BlocProvider(
-                      create: (context) => MassageBloc(),
-                      child: const ChatScreen()),
-                ),
-              );
+              Navigator.pushReplacementNamed(context, '/chat');
             }
           },
           builder: (context, state) {

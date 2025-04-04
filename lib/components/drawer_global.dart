@@ -87,11 +87,7 @@ class DrawerGlobal extends StatelessWidget {
                         .copyWith(color: theme.colorScheme.tertiary)),
                 onTap: () {
                   AuthManager.logout();
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => const LoginScreen(),
-                    ),
-                  );
+                  Navigator.pushReplacementNamed(context, '/login');
                 },
               ),
             ),
