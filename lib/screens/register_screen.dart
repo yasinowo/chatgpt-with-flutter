@@ -33,167 +33,161 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppbarGlobal(),
-        backgroundColor: theme.colorScheme.surface,
-        body: Form(
-            key: _formKey,
-            child: SingleChildScrollView(
-              padding: EdgeInsets.only(
-                right: 20.w,
-                left: 20.w,
-              ),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Create your account',
-                      style: MyFonts.titleMedium.copyWith(
-                          color: theme.colorScheme.tertiary,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 5.h),
-                      child: Text(
-                        'Join our secure AI chat platform',
-                        style: MyFonts.bodyMedium
-                            .copyWith(color: theme.colorScheme.primary),
+    return BlocProvider(
+      create: (context) => AuthBloc(),
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppbarGlobal(),
+          backgroundColor: theme.colorScheme.surface,
+          body: Form(
+              key: _formKey,
+              child: SingleChildScrollView(
+                padding: EdgeInsets.only(
+                  right: 20.w,
+                  left: 20.w,
+                ),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Create your account',
+                        style: MyFonts.titleMedium.copyWith(
+                            color: theme.colorScheme.tertiary,
+                            fontWeight: FontWeight.bold),
                       ),
-                    ),
-                    Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: TextFildGlobal(
-                          controller: displayNameController,
-                          text: 'Name',
-                        )),
-                    Padding(
-                        padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
-                        child: TextFildGlobal(
-                          controller: emailController,
-                          text: 'Email Address',
-                        )),
-                    Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: PwTextFildGlobal(
-                          controller: passwordController,
-                          text: 'Password',
-                        )),
-                    Padding(
-                        padding: EdgeInsets.only(top: 10.h, bottom: 5),
-                        child: PwTextFildGlobal(
-                          controller: passwordConfirmController,
-                          text: 'Password Confirm',
-                          passwordConfirmController: passwordController,
-                        )),
-                    agreeTP(theme),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10.w),
-                      child: ElevatedButtonGlobal(
-                        text: 'Sign Up',
-                        formKey: _formKey,
-                        emailController: emailController,
-                        passwordController: passwordController,
-                        displayNameController: displayNameController,
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 5.h),
+                        child: Text(
+                          'Join our secure AI chat platform',
+                          style: MyFonts.bodyMedium
+                              .copyWith(color: theme.colorScheme.primary),
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 1.h,
-                            width: 70.w,
-                            child: Divider(
-                              thickness: 0.9,
-                              indent: 0,
-                              endIndent: 7,
-                              // color: Colors.white,
+                      Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10.h),
+                          child: TextFildGlobal(
+                            controller: displayNameController,
+                            text: 'Name',
+                          )),
+                      Padding(
+                          padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
+                          child: TextFildGlobal(
+                            controller: emailController,
+                            text: 'Email Address',
+                          )),
+                      Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10.h),
+                          child: PwTextFildGlobal(
+                            controller: passwordController,
+                            text: 'Password',
+                          )),
+                      Padding(
+                          padding: EdgeInsets.only(top: 10.h, bottom: 5),
+                          child: PwTextFildGlobal(
+                            controller: passwordConfirmController,
+                            text: 'Password Confirm',
+                            passwordConfirmController: passwordController,
+                          )),
+                      agreeTP(theme),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10.w),
+                        child: ElevatedButtonGlobal(
+                          text: 'Sign Up',
+                          formKey: _formKey,
+                          emailController: emailController,
+                          passwordController: passwordController,
+                          displayNameController: displayNameController,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 1.h,
+                              width: 70.w,
+                              child: Divider(
+                                thickness: 0.9,
+                                indent: 0,
+                                endIndent: 7,
+                                // color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              'Or continue with',
+                              style: MyFonts.bodySmall
+                                  .copyWith(color: theme.colorScheme.primary),
+                            ),
+                            SizedBox(
+                              height: 1.h,
+                              width: 70.w,
+                              child: Divider(
+                                thickness: 0.9,
+                                indent: 7,
+                                endIndent: 0,
+                                //color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 20.w, vertical: 15.h),
+                        child: InkWell(
+                          onTap: () {},
+                          child: Container(
+                            width: 250.w,
+                            height: 45.h,
+                            decoration: BoxDecoration(
+                                color: theme.colorScheme.inversePrimary,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/google.png',
+                                  height: 25.h,
+                                  width: 25.w,
+                                ),
+                                SizedBox(
+                                  width: 3.w,
+                                ),
+                                Text(' Sign up with Google',
+                                    style: MyFonts.bodyMedium.copyWith(
+                                        color: theme.colorScheme.tertiary))
+                              ],
                             ),
                           ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
                           Text(
-                            'Or continue with',
+                            'Already have an account? ',
                             style: MyFonts.bodySmall
                                 .copyWith(color: theme.colorScheme.primary),
                           ),
-                          SizedBox(
-                            height: 1.h,
-                            width: 70.w,
-                            child: Divider(
-                              thickness: 0.9,
-                              indent: 7,
-                              endIndent: 0,
-                              //color: Colors.white,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/login');
+                            },
+                            child: Text(
+                              'Sign in',
+                              style: MyFonts.bodySmall
+                                  .copyWith(color: theme.colorScheme.tertiary),
                             ),
                           ),
                         ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 20.w, vertical: 15.h),
-                      child: InkWell(
-                        onTap: () {},
-                        child: Container(
-                          width: 250.w,
-                          height: 45.h,
-                          decoration: BoxDecoration(
-                              color: theme.colorScheme.inversePrimary,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                'assets/images/google.png',
-                                height: 25.h,
-                                width: 25.w,
-                              ),
-                              SizedBox(
-                                width: 3.w,
-                              ),
-                              Text(' Sign up with Google',
-                                  style: MyFonts.bodyMedium.copyWith(
-                                      color: theme.colorScheme.tertiary))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Already have an account? ',
-                          style: MyFonts.bodySmall
-                              .copyWith(color: theme.colorScheme.primary),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/login');
-                            // Navigator.pushReplacement(context,
-                            //     MaterialPageRoute(
-                            //   builder: (context) {
-                            //     return BlocProvider(
-                            //       create: (context) => AuthBloc(),
-                            //       child: LoginScreen(),
-                            //     );
-                            //   },
-                            // ));
-                          },
-                          child: Text(
-                            'Sign in',
-                            style: MyFonts.bodySmall
-                                .copyWith(color: theme.colorScheme.tertiary),
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            )),
+              )),
+        ),
       ),
     );
   }

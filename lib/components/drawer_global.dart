@@ -89,10 +89,7 @@ class DrawerGlobal extends StatelessWidget {
                   AuthManager.logout();
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (context) => BlocProvider(
-                        create: (context) => AuthBloc(),
-                        child: const LoginScreen(),
-                      ),
+                      builder: (context) => const LoginScreen(),
                     ),
                   );
                 },
