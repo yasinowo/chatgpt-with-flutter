@@ -7,20 +7,21 @@ import 'package:my_chat_gpt/bloc/auth/auth_usecase.dart';
 import 'package:my_chat_gpt/data/repository/auth_repository.dart';
 import 'package:my_chat_gpt/model/user_model.dart';
 import 'package:my_chat_gpt/util/auth_manager.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final SignUpUseCase _signUpUseCase = SignUpUseCase();
+  final AuthUsecase _authUsecase;
 
-  AuthBloc() : super(AuthInitial()) {
+  AuthBloc(this._authUsecase) : super(AuthInitial()) {
     @override
     Stream<AuthState> mapEventToState(AuthEvent event) async* {
       if (event is SignUp) {
         yield AuthLoading();
         try {
-          final user = await _signUpUseCase.execute(event.user);
+          final user = await _authUsecase.signUp.execute(event.user);
           yield AuthSuccess(user);
         } catch (e) {
           yield AuthFailure(e.toString());
@@ -29,7 +30,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       if (event is SignIn) {
         yield AuthLoading();
         try {
-          final user = await _signinUseCase.execute(event.user);
+          final user = await _authUsecase.signIn.execute(event.user);
           yield AuthSuccess(user);
         } catch (e) {
           yield AuthFailure(e.toString());
