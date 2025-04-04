@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_chat_gpt/bloc/auth/auth_bloc.dart';
+import 'package:my_chat_gpt/screens/login_screen.dart';
 import 'package:my_chat_gpt/them/fonts_style.dart';
 import 'package:my_chat_gpt/components/appbar_global.dart';
 import 'package:my_chat_gpt/components/button_global.dart';
@@ -14,10 +17,10 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final TextEditingController nameController =
+  final TextEditingController displayNameController =
       TextEditingController(text: 'test');
   final TextEditingController emailController =
-      TextEditingController(text: 'test@gmail.com');
+      TextEditingController(text: 'fortr.vib@gmail.com');
 
   final TextEditingController passwordConfirmController =
       TextEditingController(text: '12345678');
@@ -59,14 +62,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             .copyWith(color: theme.colorScheme.primary),
                       ),
                     ),
-                    // Padding(
-                    //     padding: EdgeInsets.symmetric(vertical: 10.h),
-                    //     child: TextFildGlobal(
-                    //       controller: nameController,
-                    //       text: 'Full Name',
-                    //     )),
                     Padding(
-                        padding: EdgeInsets.only(bottom: 10.h, top: 30.h),
+                        padding: EdgeInsets.symmetric(vertical: 10.h),
+                        child: TextFildGlobal(
+                          controller: displayNameController,
+                          text: 'Name',
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10.h, top: 10.h),
                         child: TextFildGlobal(
                           controller: emailController,
                           text: 'Email Address',
@@ -92,6 +95,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         formKey: _formKey,
                         emailController: emailController,
                         passwordController: passwordController,
+                        displayNameController: displayNameController,
                       ),
                     ),
                     Padding(
@@ -165,10 +169,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           style: MyFonts.bodySmall
                               .copyWith(color: theme.colorScheme.primary),
                         ),
-                        Text(
-                          'Login',
-                          style: MyFonts.bodySmall
-                              .copyWith(color: theme.colorScheme.tertiary),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/login');
+                            // Navigator.pushReplacement(context,
+                            //     MaterialPageRoute(
+                            //   builder: (context) {
+                            //     return BlocProvider(
+                            //       create: (context) => AuthBloc(),
+                            //       child: LoginScreen(),
+                            //     );
+                            //   },
+                            // ));
+                          },
+                          child: Text(
+                            'Sign in',
+                            style: MyFonts.bodySmall
+                                .copyWith(color: theme.colorScheme.tertiary),
+                          ),
                         ),
                       ],
                     )

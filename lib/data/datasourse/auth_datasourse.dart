@@ -11,9 +11,9 @@ class AuthDataSource extends IAuthDatasource {
   @override
   Future<User?> signUp(UserModel user) async {
     final response = await _client.auth.signUp(
-      email: user.email,
-      password: user.password,
-    );
+        email: user.email,
+        password: user.password,
+        data: {'display_name': user.displayName});
     return response.user;
   }
 

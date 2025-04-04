@@ -8,18 +8,19 @@ import 'package:my_chat_gpt/model/user_model.dart';
 import 'package:my_chat_gpt/them/fonts_style.dart';
 
 class ElevatedButtonGlobal extends StatelessWidget {
-  const ElevatedButtonGlobal({
-    super.key,
-    required this.text,
-    required this.formKey,
-    this.emailController,
-    this.passwordController,
-  });
+  const ElevatedButtonGlobal(
+      {super.key,
+      required this.text,
+      required this.formKey,
+      this.emailController,
+      this.passwordController,
+      this.displayNameController});
 
   final String text;
   final GlobalKey<FormState> formKey;
   final TextEditingController? emailController;
   final TextEditingController? passwordController;
+  final TextEditingController? displayNameController;
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +44,9 @@ class ElevatedButtonGlobal extends StatelessWidget {
   void _onButtonPressed(BuildContext context) {
     if (formKey.currentState?.validate() ?? false) {
       final user = UserModel(
-        email: emailController!.text,
-        password: passwordController!.text,
-      );
+          email: emailController!.text,
+          password: passwordController!.text,
+          displayName: displayNameController!.text);
 
       if (text == 'Login') {
         BlocProvider.of<AuthBloc>(context).add(SignIn(user));
