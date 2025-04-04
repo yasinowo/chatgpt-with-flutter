@@ -32,7 +32,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     //   print('login success : $event.username');
     // });
   }
-}
+
 // class AuthBloc extends Bloc<AuthEvent, AuthState> {
 //   final IAuthRepasitory repository = locator.get();
 //   AuthBloc() : super(AuthInitiateState()) {
