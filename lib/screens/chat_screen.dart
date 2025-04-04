@@ -33,7 +33,6 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     super.initState();
     _loadMessages(); // بارگذاری پیام‌های ذخیره‌شده
-    _scrollToBottom;
   }
 
   bool lastMessage = false;

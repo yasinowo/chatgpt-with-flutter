@@ -7,6 +7,7 @@ import 'package:my_chat_gpt/bloc/auth/auth_bloc.dart';
 import 'package:my_chat_gpt/bloc/massege/massage_bloc.dart';
 import 'package:my_chat_gpt/data/database/chat_database.dart';
 import 'package:my_chat_gpt/data/di.dart';
+import 'package:my_chat_gpt/data/shared_prefernce.dart';
 import 'package:my_chat_gpt/screens/chat_screen.dart';
 import 'package:my_chat_gpt/screens/login_screen.dart';
 import 'package:my_chat_gpt/screens/profile_screen.dart';
@@ -60,7 +61,18 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: LoginScreen(),
+      child: FutureBuilder(
+        future: checkToken(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          } else if (snapshot.data == true) {
+            return ChatScreen();
+          } else {
+            return LoginScreen();
+          }
+        },
+      ),
 
       //  (AuthManager.hasUsername() == false)
       //     ? BlocProvider(
