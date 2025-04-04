@@ -13,15 +13,16 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final AuthUsecase _authUsecase;
+  final SignUpUseCase _signUpUseCase = SignUpUseCase();
+  final SignInUseCase _signInUseCase = SignInUseCase();
 
-  AuthBloc(this._authUsecase) : super(AuthInitial()) {
+  AuthBloc() : super(AuthInitial()) {
     @override
     Stream<AuthState> mapEventToState(AuthEvent event) async* {
       if (event is SignUp) {
         yield AuthLoading();
         try {
-          final user = await _authUsecase.signUp.execute(event.user);
+          final user = await _signUpUseCase.execute(event.user);
           yield AuthSuccess(user);
         } catch (e) {
           yield AuthFailure(e.toString());
@@ -30,7 +31,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       if (event is SignIn) {
         yield AuthLoading();
         try {
-          final user = await _authUsecase.signIn.execute(event.user);
+          final user = await _signInUseCase.execute(event.user);
           yield AuthSuccess(user);
         } catch (e) {
           yield AuthFailure(e.toString());
