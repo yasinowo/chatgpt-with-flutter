@@ -67,22 +67,13 @@ class MyApp extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return CircularProgressIndicator();
           } else if (snapshot.data == true) {
-            return ChatScreen();
+            return BlocProvider(
+                create: (context) => MessegeBloc(), child: ChatScreen());
           } else {
             return LoginScreen();
           }
         },
       ),
-
-      //  (AuthManager.hasUsername() == false)
-      //     ? BlocProvider(
-      //         create: (context) => AuthBloc(),
-      //         child: LoginScreen(),
-      //       )
-      //     : BlocProvider(
-      //         create: (context) => MassageBloc(),
-      //         child: ChatScreen(),
-      //       ),
     );
   }
 }
