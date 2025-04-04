@@ -40,7 +40,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return BlocProvider(
-      create: (context) => MassageBloc(),
+      create: (context) => MessegeBloc(),
       child: SafeArea(
         child: Scaffold(
           appBar: AppbarGlobal(),
@@ -49,7 +49,7 @@ class _ChatScreenState extends State<ChatScreen> {
           body: Column(
             children: [
               Expanded(
-                child: BlocConsumer<MassageBloc, MassageState>(
+                child: BlocConsumer<MessegeBloc, MassageState>(
                   listener: (context, state) {
                     if (state is MessageResponseS) {
                       _saveMessage(
@@ -308,7 +308,7 @@ class _ChatScreenState extends State<ChatScreen> {
               if (_textController.text.isNotEmpty) {
                 _saveMessage(text, true); // ذخیره پیام کاربر
                 lastMessage = true;
-                context.read<MassageBloc>().add(SendMassageE(text));
+                context.read<MessegeBloc>().add(SendMassageE(text));
                 _textController.clear();
                 _scrollToBottom();
               }

@@ -4,9 +4,9 @@ import 'package:my_chat_gpt/bloc/massege/massage_state.dart';
 import 'package:my_chat_gpt/data/di.dart';
 import 'package:my_chat_gpt/data/repository/chat_repository.dart';
 
-class MassageBloc extends Bloc<MassageEvent, MassageState> {
+class MessegeBloc extends Bloc<MassageEvent, MassageState> {
   final IChatRepository repository = locator.get();
-  MassageBloc() : super(MassageInitialS()) {
+  MessegeBloc() : super(MassageInitialS()) {
     on<SendMassageE>(
       (event, emit) async {
         emit(MassageLoadingS());
