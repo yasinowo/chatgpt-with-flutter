@@ -29,7 +29,7 @@ class _PwTextFildGlobalState extends State<PwTextFildGlobal> {
       child: TextFormField(
         controller: widget.controller,
         obscureText: _obscurePassword,
-        style: MyFonts.bodyLarge.copyWith(color: theme.colorScheme.secondary),
+        style: MyFonts.bodyLarge.copyWith(color: theme.colorScheme.primary),
         decoration: InputDecoration(
           fillColor: theme
               .colorScheme.inversePrimary, // Change this to your desired color

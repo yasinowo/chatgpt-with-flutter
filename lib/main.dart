@@ -28,7 +28,7 @@ Future<void> main() async {
   );
   runApp(ChangeNotifierProvider(
     child: const MyApp(),
-    create: (context) => ThemeProvider(),
+    create: (context) => ThemeProvider(context),
   ));
   ChatDatabase.instance.database;
 }

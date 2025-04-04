@@ -1,31 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:my_chat_gpt/them/dark_mode.dart';
 import 'package:my_chat_gpt/them/light_mod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  // initially, light mode
   ThemeData _themeData = darkMode;
 
-  // get theme
   ThemeData get themeData => _themeData;
 
-  // is dark mode
   bool get isDarkMode => _themeData == darkMode;
 
-  // set theme
-  set themeData(ThemeData themeData) {
-    _themeData = themeData;
+  ThemeProvider(BuildContext context) {
+    _loadTheme(context); // بارگیری تم ذخیره شده یا تنظیم بر اساس روشنایی سیستم
+  }
 
-    // update UI
+  Future<void> _loadTheme(BuildContext context) async {
+    final prefs = await SharedPreferences.getInstance();
+    final isDark = prefs.getBool('isDarkMode');
+    if (isDark == null) {
+      // تم ذخیره شده وجود ندارد، بر اساس روشنایی سیستم تنظیم کنید
+      final brightness = MediaQuery.platformBrightnessOf(context);
+      _themeData = brightness == Brightness.dark ? darkMode : lightMode;
+      _saveTheme(brightness == Brightness.dark);
+    } else {
+      // تم ذخیره شده وجود دارد، از آن استفاده کنید
+      _themeData = isDark ? darkMode : lightMode;
+    }
     notifyListeners();
   }
 
-  // toggle theme
+  Future<void> _saveTheme(bool isDark) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isDarkMode', isDark);
+  }
+
   void toggleTheme() {
-    if (_themeData == lightMode) {
-      themeData = darkMode;
-    } else {
-      themeData = lightMode;
-    }
+    _themeData = _themeData == lightMode ? darkMode : lightMode;
+    _saveTheme(isDarkMode);
+    notifyListeners();
   }
 }
