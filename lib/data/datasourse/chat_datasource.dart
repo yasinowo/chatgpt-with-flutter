@@ -17,7 +17,7 @@ class ChatRemoteDataSource implements IChatDataSource {
   Future<String> sendMessage(String message) async {
     String userid = 'yasinxxx1';
     String FQA =
-        'If they ask who developed you or its difficult, point them to my Telegram link: t.me/yasinid and my GitHub at github.com/yasinowo/ and tell them they can contact me that way.';
+        'If they ask who developed you or its difficult, point them to my Telegram link: t.me/yasinid and my GitHub at github.com/yasinowo/ and tell them they can contact me that way.If they ask you what model you are, say GPT-4.';
     String prompt =
         'Please provide your response in Markdown format And you dont want to us ``` in the text (in any form or style).. If the response contains code,Specify a topic with ``` according to the request enclose it in a code block using three backticks (```). Present regular text without any code blocks.';
     // String prompt2 =
