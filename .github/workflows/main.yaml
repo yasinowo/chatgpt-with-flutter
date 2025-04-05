@@ -35,8 +35,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: build/app/outputs/apk/release/app-*.apk
-          name: Release APK v0.0.1
-          tag_name: v0.0.1
+          name: Release APK v0.0.3
+          tag_name: v0.0.3
           body: "Release APK build number ${{ github.run_number }} latest"
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
