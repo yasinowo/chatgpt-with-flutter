@@ -9,6 +9,6 @@ ThemeData lightMode = ThemeData(
         0xffF0F0F0), // متن‌های معمولی و دکمه‌های غیرفعال (در دارک مود: 0xff1F2937)
     primary: Color(0xff616161), // متن‌های قوی‌تر (در دارک مود: 0xff6B7280)
     shadow: Color(0xffD1D5DB), // سایه‌ها (در دارک مود: 0xff030712)
-    primaryContainer: Colors.blue, // رنگ اصلی دکمه ها
+    primaryContainer: Colors.cyan, // رنگ اصلی دکمه ها
   ),
 );
