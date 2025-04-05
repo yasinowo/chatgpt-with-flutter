@@ -23,6 +23,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           final user = await _signUpUseCase.execute(event.user);
           emit(AuthSuccess(user));
           print(user);
+        } on AuthException catch (e) {
+          emit(AuthFailure(e.message));
+          print(e.message);
         } catch (e) {
           emit(AuthFailure(e.toString()));
           print(e.toString());
@@ -36,6 +39,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           final user = await _signInUseCase.execute(event.user);
           emit(AuthSuccess(user));
           print(user);
+        } on AuthException catch (e) {
+          emit(AuthFailure(e.message));
+          print(e.message);
         } catch (e) {
           emit(AuthFailure(e.toString()));
           print(e.toString());

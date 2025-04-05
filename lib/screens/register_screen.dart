@@ -43,6 +43,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
               if (state is AuthSuccess) {
                 Navigator.pushReplacementNamed(context, '/chat');
               }
+              if (state is AuthFailure) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      state.error,
+                      style: MyFonts.bodyMedium,
+                    ),
+                  ),
+                );
+              }
             },
             builder: (context, state) {
               return Form(
