@@ -5,6 +5,7 @@ import 'package:my_chat_gpt/data/database/chat_database.dart';
 import 'package:my_chat_gpt/data/di.dart';
 import 'package:my_chat_gpt/model/massage_model.dart';
 import 'package:my_chat_gpt/util/api_exception.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class IChatDataSource {
   Future<String> sendMessage(String message);
@@ -15,11 +16,13 @@ class ChatRemoteDataSource implements IChatDataSource {
   final Dio dio = locator.get();
   @override
   Future<String> sendMessage(String message) async {
-    String userid = 'yasinxxx1';
+    String userid = Supabase.instance.client.auth.currentUser!.email!;
+    // String telegramLink = r'https://t.me/yasinid';
+    // String githubLink = r'https://github.com/yasinowo';
     String FQA =
-        'If they ask who developed you or its difficult, point them to my Telegram link: t.me/yasinid and my GitHub at github.com/yasinowo/ and tell them they can contact me that way.If they ask you what model you are, say GPT-4.';
+        'only If just they ask who developed you or its difficult , point them to my telegram : [yasinid](https://t.me/yasinid) and my githyb at [yasinowo](https://github.com/yasinowo) and tell them they can contact me that way.If they ask you what model you are, say GPT-4.';
     String prompt =
-        'Please provide your response in Markdown format And you dont want to us ``` in the text (in any form or style).. If the response contains code,Specify a topic with ``` according to the request enclose it in a code block using three backticks (```). Present regular text without any code blocks.';
+        'Please provide your response in Markdown format And and the links just you dont want to us ``` in the text (in any form or style).. If the response contains code,Specify a topic with ``` according to the request enclose it in a code block using three backticks (```). Present regular text without any code blocks.';
     // String prompt2 =
     //     '1. I want you to provide your answer only in Markdown |2. Only if the users question asks about the person who wrote this API or program, please refer to my GitHub address yasinowo and my Telegram ID yasinid ';
     // String prompt3 =

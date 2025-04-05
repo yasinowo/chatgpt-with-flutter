@@ -67,7 +67,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           lastMessage == true) {
                         if (_animationFinished[msg.timestamp] == true) {
                           // اگر انیمیشن به اتمام رسیده است، chatbox2 را نمایش بده
-                          return chatbox2(msg);
+                          return aiChat(msg);
                         } else {
                           // اگر انیمیشن هنوز به اتمام نرسیده است، lastMessageAiWithAnimated را نمایش بده
                           return lastMessageAiWithAnimated(msg);
@@ -78,7 +78,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       }
 
                       // پیام‌های عادی (کاربر یا پیام‌های قبلی هوش مصنوعی)
-                      return chatbox2(msg);
+                      return aiChat(msg);
                       //chatbox1(msg, theme);
                     },
                   );
@@ -99,12 +99,12 @@ class _ChatScreenState extends State<ChatScreen> {
     int totalRepeatCount = 1;
     if (_animationFinished[msg.timestamp] == true) {
       // اگر انیمیشن به اتمام رسیده است، chatbox2 را نمایش بده
-      return chatbox2(msg);
+      return aiChat(msg);
     }
     if (_animationShown[msg.timestamp] == true) {
       // اگر انیمیشن به اتمام رسیده است، chatbox2 را نمایش بده
 
-      return chatbox2(msg);
+      return aiChat(msg);
     }
     _animationShown[msg.timestamp] = true; // نمایش انیمیشن
 
@@ -125,33 +125,35 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            // AnimatedTextKit(
-            //   totalRepeatCount: totalRepeatCount,
-            //   animatedTexts: [
-            //     TypewriterAnimatedText(
-            //       msg.message,
-            //       textStyle: MyFonts.bodyMedium.copyWith(
-            //         color: Theme.of(context).colorScheme.tertiary,
-            //       ),
-            //       speed: Duration(milliseconds: 15),
-            //     ),
-            //   ],
-            //   // onFinished: () {
-            //   //   // setState(() {});
-            //   // },
-            // ),
-            StreamTypewriterAnimatedText(
-              text: msg.message,
-              style: MyFonts.bodyMedium.copyWith(
-                color: Theme.of(context).colorScheme.tertiary,
-              ),
+            AnimatedTextKit(
+              totalRepeatCount: totalRepeatCount,
+              animatedTexts: [
+                TypewriterAnimatedText(
+                  msg.message,
+                  textStyle: MyFonts.bodyMedium.copyWith(
+                    color: Theme.of(context).colorScheme.tertiary,
+                  ),
+                  speed: Duration(milliseconds: 6),
+                ),
+              ],
               onFinished: () {
                 setState(() {
                   _animationFinished[msg.timestamp] = true; // اتمام انیمیشن
                 });
               },
-              speed: const Duration(milliseconds: 15),
             ),
+            // StreamTypewriterAnimatedText(
+            //   text: msg.message,
+            //   style: MyFonts.bodyMedium.copyWith(
+            //     color: Theme.of(context).colorScheme.tertiary,
+            //   ),
+            //   onFinished: () {
+            //     setState(() {
+            //       _animationFinished[msg.timestamp] = true; // اتمام انیمیشن
+            //     });
+            //   },
+            //   speed: const Duration(milliseconds: 15),
+            // ),
             Text(
               msg.timestamp.formatTime(msg.timestamp),
               style: MyFonts.displaySmall
@@ -164,7 +166,7 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  Align chatbox2(
+  Align aiChat(
     Message msg,
   ) {
     // اگر پیام کاربر باشد
