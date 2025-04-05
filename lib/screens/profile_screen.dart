@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:my_chat_gpt/components/appbar_global.dart';
+import 'package:my_chat_gpt/them/fonts_style.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -8,59 +11,97 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Supabase.instance.client.auth.currentUser;
-
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('profile'),
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // تصویر پروفایل
-              CircleAvatar(
-                radius: 60,
-                backgroundImage: NetworkImage(
-                    'https://via.placeholder.com/150'), // جایگزین با آدرس تصویر پیش‌فرض
-              ),
-              SizedBox(height: 16),
-              // نام نمایشی
-              Text(
-                user?.userMetadata?['full_name'] ?? 'نام نمایشی',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 8),
-              // ایمیل
-              Text(
-                user?.email ?? 'ایمیل نامشخص',
-                style: TextStyle(fontSize: 16, color: Colors.grey),
-              ),
-              SizedBox(height: 24),
-              // دکمه ویرایش پروفایل
-              ElevatedButton(
-                onPressed: () {
-                  // منطق ویرایش پروفایل
-                },
-                child: Text('ویرایش پروفایل'),
-              ),
-              SizedBox(height: 24),
-              // لیست اطلاعات اضافی
-              ListTile(
-                leading: Icon(Icons.phone),
-                title: Text('شماره تلفن'),
-                subtitle: Text(user?.userMetadata?['phone'] ?? 'نامشخص'),
-              ),
-              ListTile(
-                leading: Icon(Icons.location_on),
-                title: Text('آدرس'),
-                subtitle: Text(user?.userMetadata?['address'] ?? 'نامشخص'),
-              ),
-              // ... سایر اطلاعات اضافی
-            ],
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // تصویر پروفایل
+                Container(
+                  width: 330.w,
+                  height: 260.h,
+                  decoration: BoxDecoration(
+                      color: theme.colorScheme.inversePrimary,
+                      borderRadius: BorderRadius.all(Radius.circular(12))),
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                    child: Column(mainAxisSize: MainAxisSize.min, children: [
+                      SizedBox(
+                        width: 120.w,
+                        height: 120.h,
+                        child: CircleAvatar(
+                          radius: 60,
+                          backgroundColor: theme.colorScheme.primary,
+                          child: Center(
+                            child: SvgPicture.asset(
+                              width: 130.w,
+                              height: 130.h,
+                              'assets/images/user_profile.svg',
+                              alignment: Alignment.center,
+                              fit: BoxFit.fitHeight,
+                              colorFilter: ColorFilter.mode(
+                                theme.colorScheme.surface,
+                                BlendMode.srcIn,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        user?.userMetadata?['display_name'] ?? 'user name',
+                        style: MyFonts.titleMedium
+                            .copyWith(color: theme.colorScheme.tertiary),
+                      ),
+                      SizedBox(width: 10.h),
+                      Text(
+                        user?.email ?? 'email',
+                        style: MyFonts.bodyLarge
+                            .copyWith(color: theme.colorScheme.tertiary),
+                      ),
+                      SizedBox(height: 20.h),
+                      editprofileButton(theme, context)
+                    ]),
+                  ),
+                ),
+                SizedBox(height: 10.h),
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('Recent Chats',
+                        style: MyFonts.bodyLarge
+                            .copyWith(color: theme.colorScheme.tertiary)))
+              ],
+            ),
           ),
         ),
+      ),
+    );
+  }
+
+  ElevatedButton editprofileButton(ThemeData theme, BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.pushNamed(context, '/edit_profile');
+      },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: theme.colorScheme.primaryContainer,
+        foregroundColor: theme.colorScheme.tertiary,
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      child: Text(
+        'Edit Profile',
+        style: MyFonts.bodySmall.copyWith(
+            color: theme.colorScheme.tertiary, fontWeight: FontWeight.bold),
       ),
     );
   }
