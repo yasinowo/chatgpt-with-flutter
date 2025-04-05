@@ -54,7 +54,8 @@ class MyApp extends StatelessWidget {
           routes: {
             '/register': (context) => const RegisterScreen(),
             '/login': (context) => const LoginScreen(),
-            '/chat': (context) => const ChatScreen(),
+            '/chat': (context) => BlocProvider(
+                create: (context) => MessegeBloc(), child: const ChatScreen()),
             '/setting': (context) => const SettingScreen(),
             '/profile': (context) => const ProfileScreen(),
             '/edit_profile': (context) => const EditProfileScreen(),
