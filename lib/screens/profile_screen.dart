@@ -76,11 +76,97 @@ class ProfileScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text('Recent Chats',
                         style: MyFonts.bodyLarge
-                            .copyWith(color: theme.colorScheme.tertiary)))
+                            .copyWith(color: theme.colorScheme.tertiary))),
+                SizedBox(height: 10.h),
+                historyBox(theme),
+                SizedBox(height: 15.h),
+                historyBox2(theme), SizedBox(height: 15.h),
+                historyBox3(theme)
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Container historyBox(ThemeData theme) {
+    return Container(
+      width: 340.w,
+      height: 70.h,
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+          color: theme.colorScheme.inversePrimary),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Project Planning',
+            style: MyFonts.bodyMedium.copyWith(
+                color: theme.colorScheme.tertiary, fontWeight: FontWeight.w500),
+          ),
+          Text(
+            'Yesterday',
+            style: MyFonts.bodySmall.copyWith(color: theme.colorScheme.primary),
+          )
+        ],
+      ),
+    );
+  }
+
+  Container historyBox2(ThemeData theme) {
+    return Container(
+      width: 340.w,
+      height: 70.h,
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+          color: theme.colorScheme.inversePrimary),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Project Planning',
+            style: MyFonts.bodyMedium.copyWith(
+                color: theme.colorScheme.tertiary, fontWeight: FontWeight.w500),
+          ),
+          Text(
+            'Yesterday',
+            style: MyFonts.bodySmall.copyWith(color: theme.colorScheme.primary),
+          )
+        ],
+      ),
+    );
+  }
+
+  Container historyBox3(ThemeData theme) {
+    return Container(
+      width: 340.w,
+      height: 70.h,
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+          color: theme.colorScheme.inversePrimary),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Project Planning',
+            style: MyFonts.bodyMedium.copyWith(
+                color: theme.colorScheme.tertiary, fontWeight: FontWeight.w500),
+          ),
+          Text(
+            'Yesterday',
+            style: MyFonts.bodySmall.copyWith(color: theme.colorScheme.primary),
+          )
+        ],
       ),
     );
   }
