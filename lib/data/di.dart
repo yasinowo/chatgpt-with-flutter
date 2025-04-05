@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:my_chat_gpt/data/datasourse/chat_datasource.dart';
-import 'package:my_chat_gpt/data/repository/chat_repository.dart';
+import 'package:ichat/data/datasourse/chat_datasource.dart';
+import 'package:ichat/data/repository/chat_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var locator = GetIt.instance;

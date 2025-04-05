@@ -1,5 +1,5 @@
-import 'package:my_chat_gpt/data/datasourse/chat_datasource.dart';
-import 'package:my_chat_gpt/data/di.dart';
+import 'package:ichat/data/datasourse/chat_datasource.dart';
+import 'package:ichat/data/di.dart';
 
 abstract class IChatRepository {
   Future<String> sendMessage(String message);

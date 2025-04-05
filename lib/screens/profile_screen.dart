@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:my_chat_gpt/components/appbar_global.dart';
-import 'package:my_chat_gpt/them/fonts_style.dart';
+import 'package:ichat/them/fonts_style.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProfileScreen extends StatelessWidget {

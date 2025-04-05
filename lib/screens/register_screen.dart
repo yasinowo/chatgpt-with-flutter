@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_chat_gpt/bloc/auth/auth_bloc.dart';
-import 'package:my_chat_gpt/them/fonts_style.dart';
-import 'package:my_chat_gpt/components/appbar_global.dart';
-import 'package:my_chat_gpt/components/button_global.dart';
-import 'package:my_chat_gpt/components/textfild_global.dart';
-import 'package:my_chat_gpt/components/textfildpass_global.dart';
+import 'package:ichat/bloc/auth/auth_bloc.dart';
+import 'package:ichat/them/fonts_style.dart';
+import 'package:ichat/components/appbar_global.dart';
+import 'package:ichat/components/button_global.dart';
+import 'package:ichat/components/textfild_global.dart';
+import 'package:ichat/components/textfildpass_global.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});

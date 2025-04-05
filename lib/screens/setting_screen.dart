@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_chat_gpt/them/theme_provider.dart';
+import 'package:ichat/them/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class SettingScreen extends StatelessWidget {

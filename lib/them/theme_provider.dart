@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_chat_gpt/them/dark_mode.dart';
-import 'package:my_chat_gpt/them/light_mod.dart';
+import 'package:ichat/them/dark_mode.dart';
+import 'package:ichat/them/light_mod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider extends ChangeNotifier {

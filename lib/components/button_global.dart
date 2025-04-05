@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_chat_gpt/bloc/auth/auth_bloc.dart';
-import 'package:my_chat_gpt/model/user_model.dart';
-import 'package:my_chat_gpt/them/fonts_style.dart';
+import 'package:ichat/bloc/auth/auth_bloc.dart';
+import 'package:ichat/model/user_model.dart';
+import 'package:ichat/them/fonts_style.dart';
 
 class ElevatedButtonGlobal extends StatelessWidget {
   const ElevatedButtonGlobal(

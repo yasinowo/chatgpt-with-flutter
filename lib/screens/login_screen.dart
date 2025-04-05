@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_chat_gpt/bloc/auth/auth_bloc.dart';
-import 'package:my_chat_gpt/bloc/massege/massage_bloc.dart';
-import 'package:my_chat_gpt/screens/chat_screen.dart';
-import 'package:my_chat_gpt/them/fonts_style.dart';
-import 'package:my_chat_gpt/util/auth_manager.dart';
-import 'package:my_chat_gpt/util/constants.dart';
-import 'package:my_chat_gpt/components/button_global.dart';
-import 'package:my_chat_gpt/components/textfild_global.dart';
-import 'package:my_chat_gpt/components/textfildpass_global.dart';
+import 'package:ichat/bloc/auth/auth_bloc.dart';
+import 'package:ichat/them/fonts_style.dart';
+import 'package:ichat/util/auth_manager.dart';
+import 'package:ichat/util/constants.dart';
+import 'package:ichat/components/button_global.dart';
+import 'package:ichat/components/textfild_global.dart';
+import 'package:ichat/components/textfildpass_global.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LoginScreen extends StatefulWidget {

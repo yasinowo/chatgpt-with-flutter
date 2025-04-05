@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_chat_gpt/them/fonts_style.dart';
-import 'package:my_chat_gpt/util/constants.dart';
+import 'package:ichat/them/fonts_style.dart';
 
 // ignore: must_be_immutable
 class TextFildGlobal extends StatelessWidget {

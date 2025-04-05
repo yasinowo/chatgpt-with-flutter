@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:my_chat_gpt/data/di.dart';
+import 'package:ichat/data/di.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthManager {

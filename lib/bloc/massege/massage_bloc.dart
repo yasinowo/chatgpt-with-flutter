@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:my_chat_gpt/bloc/massege/massage_event.dart';
-import 'package:my_chat_gpt/bloc/massege/massage_state.dart';
-import 'package:my_chat_gpt/data/di.dart';
-import 'package:my_chat_gpt/data/repository/chat_repository.dart';
+import 'package:ichat/bloc/massege/massage_event.dart';
+import 'package:ichat/bloc/massege/massage_state.dart';
+import 'package:ichat/data/di.dart';
+import 'package:ichat/data/repository/chat_repository.dart';
 
 class MessegeBloc extends Bloc<MassageEvent, MassageState> {
   final IChatRepository repository = locator.get();

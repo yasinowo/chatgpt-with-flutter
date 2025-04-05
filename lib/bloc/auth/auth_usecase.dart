@@ -1,5 +1,5 @@
-import 'package:my_chat_gpt/data/repository/auth_repository.dart';
-import 'package:my_chat_gpt/model/user_model.dart';
+import 'package:ichat/data/repository/auth_repository.dart';
+import 'package:ichat/model/user_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SignUpUseCase {

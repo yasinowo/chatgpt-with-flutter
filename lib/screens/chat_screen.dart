@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gpt_markdown/gpt_markdown.dart';
-import 'package:my_chat_gpt/bloc/massege/massage_bloc.dart';
-import 'package:my_chat_gpt/bloc/massege/massage_event.dart';
-import 'package:my_chat_gpt/bloc/massege/massage_state.dart';
-import 'package:my_chat_gpt/components/drawer_global.dart';
-import 'package:my_chat_gpt/data/database/chat_database.dart';
-import 'package:my_chat_gpt/model/massage_model.dart';
-import 'package:my_chat_gpt/them/fonts_style.dart';
-import 'package:my_chat_gpt/util/extentions.dart';
-import 'package:my_chat_gpt/components/appbar_global.dart';
-import 'package:stream_typewriter_text/stream_typewriter_text.dart';
+import 'package:ichat/bloc/massege/massage_bloc.dart';
+import 'package:ichat/bloc/massege/massage_event.dart';
+import 'package:ichat/bloc/massege/massage_state.dart';
+import 'package:ichat/components/drawer_global.dart';
+import 'package:ichat/data/database/chat_database.dart';
+import 'package:ichat/model/massage_model.dart';
+import 'package:ichat/them/fonts_style.dart';
+import 'package:ichat/util/extentions.dart';
+import 'package:ichat/components/appbar_global.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ChatScreen extends StatefulWidget {
