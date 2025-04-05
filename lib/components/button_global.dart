@@ -54,8 +54,8 @@ class ElevatedButtonGlobal extends StatelessWidget {
         BlocProvider.of<AuthBloc>(context).add(SignIn(user));
       } else if (text == 'Sign Up') {
         final user = UserModel(
-            email: 'fortr.vib@gmail.com', // emailController!.text,
-            password: '12345678', //passwordController!.text,
+            email: emailController!.text,
+            password: passwordController!.text,
             displayName: displayNameController!.text);
         BlocProvider.of<AuthBloc>(context).add(SignUp(user));
       }
