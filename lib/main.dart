@@ -9,6 +9,7 @@ import 'package:my_chat_gpt/data/database/chat_database.dart';
 import 'package:my_chat_gpt/data/di.dart';
 import 'package:my_chat_gpt/data/shared_prefernce.dart';
 import 'package:my_chat_gpt/screens/chat_screen.dart';
+import 'package:my_chat_gpt/screens/edit_profile_screen.dart';
 import 'package:my_chat_gpt/screens/login_screen.dart';
 import 'package:my_chat_gpt/screens/profile_screen.dart';
 import 'package:my_chat_gpt/screens/register_screen.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
             '/chat': (context) => const ChatScreen(),
             '/setting': (context) => const SettingScreen(),
             '/profile': (context) => const ProfileScreen(),
+            '/edit_profile': (context) => const EditProfileScreen(),
           },
           // You can use the library anywhere in the app even in theme
           home: child,
