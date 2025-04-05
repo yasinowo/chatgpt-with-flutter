@@ -17,14 +17,18 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController displayNameController =
-      TextEditingController(text: 'test');
+      TextEditingController(//text: 'test'
+          );
   final TextEditingController emailController =
-      TextEditingController(text: 'fortr.vib@gmail.com');
+      TextEditingController(//text: 'fortr.vib@gmail.com'
+          );
 
   final TextEditingController passwordConfirmController =
-      TextEditingController(text: '12345678');
+      TextEditingController(//text: '12345678'
+          );
   final TextEditingController passwordController =
-      TextEditingController(text: '12345678');
+      TextEditingController(//text: '12345678'
+          );
 
   final GlobalKey<FormState> _formKey =
       GlobalKey<FormState>(); // اضافه کردن کلید فرم
@@ -46,9 +50,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
               if (state is AuthFailure) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
+                    backgroundColor: theme.colorScheme.surface,
                     content: Text(
                       state.error,
-                      style: MyFonts.bodyMedium,
+                      style: MyFonts.bodyMedium
+                          .copyWith(color: theme.colorScheme.tertiary),
                     ),
                   ),
                 );

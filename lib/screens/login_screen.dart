@@ -21,9 +21,11 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController =
-      TextEditingController(text: 'fortr.vib@gmail.com');
+      TextEditingController(//text: 'fortr.vib@gmail.com'
+          );
   final TextEditingController passwordController =
-      TextEditingController(text: '12345678');
+      TextEditingController(//text: '12345678'
+          );
 
   final GlobalKey<FormState> _formKey =
       GlobalKey<FormState>(); // اضافه کردن کلید فرم
@@ -43,9 +45,11 @@ class _LoginScreenState extends State<LoginScreen> {
             if (state is AuthFailure) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
+                  backgroundColor: theme.colorScheme.surface,
                   content: Text(
                     state.error,
-                    style: MyFonts.bodyMedium,
+                    style: MyFonts.bodyMedium
+                        .copyWith(color: theme.colorScheme.tertiary),
                   ),
                 ),
               );
