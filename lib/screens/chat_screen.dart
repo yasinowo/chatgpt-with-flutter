@@ -31,7 +31,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-    _loadMessages(); // بارگذاری پیام‌های ذخیره‌شده
+    _loadMessages(); // load messages
   }
 
   bool lastMessage = false;
@@ -49,8 +49,7 @@ class _ChatScreenState extends State<ChatScreen> {
               child: BlocConsumer<MessegeBloc, MassageState>(
                 listener: (context, state) {
                   if (state is MessageResponseS) {
-                    _saveMessage(
-                        state.response, false); // ذخیره پاسخ هوش مصنوعی
+                    _saveMessage(state.response, false); //save ai message
                   }
                 },
                 builder: (context, state) {
@@ -60,15 +59,15 @@ class _ChatScreenState extends State<ChatScreen> {
                     itemBuilder: (context, index) {
                       final msg = messages[index];
 
-                      // اگر پیام، پاسخ هوش مصنوعی و آخرین پیام باشد، از انیمیشن استفاده کن
+                      // if ai message and last message
                       if (!msg.isUser &&
                           index == messages.length - 1 &&
                           lastMessage == true) {
                         if (_animationFinished[msg.timestamp] == true) {
-                          // اگر انیمیشن به اتمام رسیده است، chatbox2 را نمایش بده
+                          // if lastMessage animated done
                           return aiChat(msg);
                         } else {
-                          // اگر انیمیشن هنوز به اتمام نرسیده است، lastMessageAiWithAnimated را نمایش بده
+                          // if lastMessage animated not done
                           return lastMessageAiWithAnimated(msg);
                         }
                         // return lastMessageAiWithAnimated(
@@ -76,7 +75,6 @@ class _ChatScreenState extends State<ChatScreen> {
                         // );
                       }
 
-                      // پیام‌های عادی (کاربر یا پیام‌های قبلی هوش مصنوعی)
                       return aiChat(msg);
                       //chatbox1(msg, theme);
                     },
@@ -97,11 +95,11 @@ class _ChatScreenState extends State<ChatScreen> {
     // lastMessage = false;
     int totalRepeatCount = 1;
     if (_animationFinished[msg.timestamp] == true) {
-      // اگر انیمیشن به اتمام رسیده است، chatbox2 را نمایش بده
+      // if animated done
       return aiChat(msg);
     }
     if (_animationShown[msg.timestamp] == true) {
-      // اگر انیمیشن به اتمام رسیده است، chatbox2 را نمایش بده
+      // if animated not done
 
       return aiChat(msg);
     }
@@ -168,7 +166,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Align aiChat(
     Message msg,
   ) {
-    // اگر پیام کاربر باشد
+    // if message is user
     if (msg.isUser) {
       return Align(
         alignment: Alignment.centerRight,

@@ -1,8 +1,8 @@
 class Message {
-  final int? id; // برای ذخیره ID از دیتابیس
-  final String message; // متن پیام
-  final bool isUser; // آیا پیام برای کاربر است یا AI
-  final String timestamp; // زمان ارسال پیام
+  final int? id; //id for database
+  final String message;
+  final bool isUser;
+  final String timestamp;
 
   Message({
     this.id,
@@ -11,7 +11,7 @@ class Message {
     required this.timestamp,
   });
 
-  // تبدیل به Map برای ذخیره در دیتابیس
+  //save on database
 
   Map<String, dynamic> toMap() {
     return {
